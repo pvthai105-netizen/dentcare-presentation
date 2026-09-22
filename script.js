@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activitySimStatus.textContent = 'Đang mô phỏng...';
     btnSimulateActivity.disabled = true;
 
-    const nodes = ['actNode0', 'actNode1', 'actNode2', 'actNodeDecision'];
+    const nodes = ['actNode0', 'actNode1', 'actMerge', 'actNode2', 'actNodeDecision'];
     let delay = 0;
 
     nodes.forEach((id, idx) => {

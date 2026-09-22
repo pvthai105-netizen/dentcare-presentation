@@ -444,41 +444,41 @@
           <div class="story-card interactive-card" data-animate style="--delay: 300ms;">
             <div class="story-badge receptionist">Lễ Tân (Receptionist)</div>
             <div class="story-body">
-              <p><strong>As a</strong> receptionist,</p>
-              <p><strong>I want to</strong> schedule appointments on an interactive calendar matrix,</p>
-              <p><strong>So that</strong> patients have reserved slots without doctor scheduling conflicts.</p>
+              <p><strong>Là một</strong> Lễ tân,</p>
+              <p><strong>Tôi muốn</strong> đặt và điều phối lịch hẹn trên ma trận lịch trực quan,</p>
+              <p><strong>Để</strong> khách hàng được giữ chỗ chuẩn xác mà không bị trùng lịch bác sĩ.</p>
             </div>
-            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Khóa slot tức thì</div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Nghiệm thu: Khóa slot tức thì &amp; chống trùng lịch</div>
           </div>
 
           <div class="story-card interactive-card" data-animate style="--delay: 350ms;">
             <div class="story-badge dentist">Nha Sĩ (Dentist)</div>
             <div class="story-body">
-              <p><strong>As a</strong> dentist,</p>
-              <p><strong>I want to</strong> record diagnosis results and treatment steps directly,</p>
-              <p><strong>So that</strong> clinical history is preserved safely for future consultations.</p>
+              <p><strong>Là một</strong> Nha sĩ,</p>
+              <p><strong>Tôi muốn</strong> ghi nhận kết quả khám lâm sàng và phác đồ điều trị trực tiếp,</p>
+              <p><strong>Để</strong> hồ sơ bệnh án được lưu trữ an toàn và dễ dàng tra cứu khi tái khám.</p>
             </div>
-            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Lưu đơn thuốc &amp; dịch vụ</div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Nghiệm thu: Lưu đơn thuốc &amp; dịch vụ điều trị</div>
           </div>
 
           <div class="story-card interactive-card" data-animate style="--delay: 400ms;">
             <div class="story-badge patient">Bệnh Nhân (Patient)</div>
             <div class="story-body">
-              <p><strong>As a</strong> patient,</p>
-              <p><strong>I want to</strong> receive SMS alerts and check my dental treatment history,</p>
-              <p><strong>So that</strong> I can attend appointments punctually and track recovery.</p>
+              <p><strong>Là một</strong> Bệnh nhân,</p>
+              <p><strong>Tôi muốn</strong> nhận tin nhắn SMS nhắc lịch và chủ động tra cứu lịch sử điều trị,</p>
+              <p><strong>Để</strong> đi khám đúng hẹn và theo dõi sát sao tiến trình điều trị răng miệng.</p>
             </div>
-            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Bảo mật thông tin riêng</div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Nghiệm thu: Bảo mật thông tin &amp; gửi SMS tự động</div>
           </div>
 
           <div class="story-card interactive-card" data-animate style="--delay: 450ms;">
             <div class="story-badge manager">Quản Lý (Manager)</div>
             <div class="story-body">
-              <p><strong>As a</strong> clinic manager,</p>
-              <p><strong>I want to</strong> view periodic revenue dashboards and service usage stats,</p>
-              <p><strong>So that</strong> I can make evidence-based clinic resource decisions.</p>
+              <p><strong>Là một</strong> Quản lý phòng khám,</p>
+              <p><strong>Tôi muốn</strong> theo dõi báo cáo doanh thu định kỳ và thống kê tần suất dịch vụ,</p>
+              <p><strong>Để</strong> đưa ra các quyết định phân bổ nhân lực và tài nguyên phòng khám chuẩn xác.</p>
             </div>
-            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Lọc doanh thu ngày/tháng</div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Nghiệm thu: Lọc doanh thu theo ngày/tháng/dịch vụ</div>
           </div>
         </div>
       </div>
@@ -523,12 +523,15 @@
               <text x="210" y="185" class="svg-action-text" text-anchor="middle">Yêu cầu đặt lịch hẹn</text>
             </g>
 
-            <line x1="290" y1="180" x2="345" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+            <line x1="290" y1="180" x2="340" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
 
-            <!-- Merge Node -->
-            <polygon points="360,170 375,180 360,190 345,180" fill="#E0F2FE" stroke="#0284C7" stroke-width="2" id="actMerge"/>
+            <!-- Merge Node (Nút Gộp Luồng Chuẩn UML) -->
+            <g id="actMergeNode" class="interactive-svg-node" style="cursor: pointer;" data-desc="<strong>Nút Gộp Luồng (Merge Node - Chuẩn UML):</strong> Tiếp nhận luồng đặt lịch ban đầu từ người dùng, hoặc luồng quay lại từ nhánh [Hết slot] sau khi đề xuất giờ khác để kiểm tra lại lịch trống.">
+              <polygon points="360,165 376,180 360,195 344,180" fill="#E0F2FE" stroke="#0284C7" stroke-width="2.2" id="actMerge"/>
+              <text x="360" y="150" class="svg-guard" text-anchor="middle" font-weight="700" fill="#0284C7">[Gộp luồng]</text>
+            </g>
 
-            <line x1="375" y1="180" x2="415" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+            <line x1="376" y1="180" x2="415" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
 
             <!-- Action 2 -->
             <g id="actNode2" class="interactive-svg-node" data-desc="Hệ thống truy vấn cơ sở dữ liệu để tìm timeSlot còn trống">
@@ -538,10 +541,10 @@
 
             <line x1="575" y1="180" x2="620" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
 
-            <!-- Decision Node -->
-            <g id="actNodeDecision" class="interactive-svg-node" style="cursor: pointer;" data-desc="Kiểm tra slot: nếu còn -> đặt lịch, nếu hết -> đề xuất giờ khác">
-              <polygon points="655,155 690,180 655,205 620,180" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
-              <text x="655" y="145" class="svg-guard" text-anchor="middle">Còn slot?</text>
+            <!-- Decision Node (Nút Rẽ Nhánh Chuẩn UML) -->
+            <g id="actNodeDecision" class="interactive-svg-node" style="cursor: pointer;" data-desc="<strong>Nút Rẽ Nhánh (Decision Node - Chuẩn UML):</strong> Kiểm tra slot - Nếu còn slot trống -> [Có] Tạo Appointment thành công; Nếu hết slot -> [Hết slot] Chuyển hướng sang đề xuất khung giờ khác.">
+              <polygon points="655,155 690,180 655,205 620,180" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2"/>
+              <text x="655" y="142" class="svg-guard" text-anchor="middle" font-weight="700" fill="#D97706">Còn slot? [Rẽ nhánh]</text>
             </g>
 
             <!-- Branch YES: Tạo appointment -->
@@ -1165,10 +1168,15 @@
             </defs>
 
             <!-- Lifelines -->
-            <g transform="translate(30, 20)">
-              <rect width="110" height="28" rx="6" class="seq-life-box"/>
-              <text x="55" y="19" class="seq-life-text">:BenhNhan</text>
-              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            <!-- Actor Stickman: :BenhNhan -->
+            <g transform="translate(30, 8)" class="seq-actor-head">
+              <circle cx="55" cy="10" r="7" class="seq-actor-head-circle"/>
+              <line x1="55" y1="17" x2="55" y2="30" class="seq-actor-line"/>
+              <line x1="43" y1="21" x2="67" y2="21" class="seq-actor-line"/>
+              <line x1="55" y1="30" x2="45" y2="42" class="seq-actor-line"/>
+              <line x1="55" y1="30" x2="65" y2="42" class="seq-actor-line"/>
+              <text x="55" y="54" class="seq-actor-name" text-anchor="middle">:BenhNhan</text>
+              <line x1="55" y1="58" x2="55" y2="350" class="seq-lifeline"/>
             </g>
             <g transform="translate(210, 20)">
               <rect width="110" height="28" rx="6" class="seq-life-box"/>
@@ -1281,10 +1289,15 @@
             </defs>
 
             <!-- Lifelines -->
-            <g transform="translate(40, 20)">
-              <rect width="100" height="28" rx="6" class="seq-life-box"/>
-              <text x="50" y="19" class="seq-life-text">:NhaSi</text>
-              <line x1="50" y1="28" x2="50" y2="350" class="seq-lifeline"/>
+            <!-- Actor Stickman: :NhaSi -->
+            <g transform="translate(40, 8)" class="seq-actor-head">
+              <circle cx="50" cy="10" r="7" class="seq-actor-head-circle"/>
+              <line x1="50" y1="17" x2="50" y2="30" class="seq-actor-line"/>
+              <line x1="38" y1="21" x2="62" y2="21" class="seq-actor-line"/>
+              <line x1="50" y1="30" x2="40" y2="42" class="seq-actor-line"/>
+              <line x1="50" y1="30" x2="60" y2="42" class="seq-actor-line"/>
+              <text x="50" y="54" class="seq-actor-name" text-anchor="middle">:NhaSi</text>
+              <line x1="50" y1="58" x2="50" y2="350" class="seq-lifeline"/>
             </g>
             <g transform="translate(210, 20)">
               <rect width="110" height="28" rx="6" class="seq-life-box"/>
@@ -1391,10 +1404,15 @@
             </defs>
 
             <!-- Lifelines -->
-            <g transform="translate(40, 20)">
-              <rect width="110" height="28" rx="6" class="seq-life-box"/>
-              <text x="55" y="19" class="seq-life-text">:BenhNhan</text>
-              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            <!-- Actor Stickman: :BenhNhan -->
+            <g transform="translate(40, 8)" class="seq-actor-head">
+              <circle cx="55" cy="10" r="7" class="seq-actor-head-circle"/>
+              <line x1="55" y1="17" x2="55" y2="30" class="seq-actor-line"/>
+              <line x1="43" y1="21" x2="67" y2="21" class="seq-actor-line"/>
+              <line x1="55" y1="30" x2="45" y2="42" class="seq-actor-line"/>
+              <line x1="55" y1="30" x2="65" y2="42" class="seq-actor-line"/>
+              <text x="55" y="54" class="seq-actor-name" text-anchor="middle">:BenhNhan</text>
+              <line x1="55" y1="58" x2="55" y2="350" class="seq-lifeline"/>
             </g>
             <g transform="translate(220, 20)">
               <rect width="110" height="28" rx="6" class="seq-life-box"/>
@@ -1411,10 +1429,15 @@
               <text x="40" y="19" class="seq-life-text">:CSDL</text>
               <line x1="40" y1="28" x2="40" y2="350" class="seq-lifeline"/>
             </g>
-            <g transform="translate(830, 20)">
-              <rect width="90" height="28" rx="6" class="seq-life-box"/>
-              <text x="45" y="19" class="seq-life-text">:NhaSi</text>
-              <line x1="45" y1="28" x2="45" y2="350" class="seq-lifeline"/>
+            <!-- Actor Stickman: :NhaSi -->
+            <g transform="translate(830, 8)" class="seq-actor-head">
+              <circle cx="45" cy="10" r="7" class="seq-actor-head-circle"/>
+              <line x1="45" y1="17" x2="45" y2="30" class="seq-actor-line"/>
+              <line x1="33" y1="21" x2="57" y2="21" class="seq-actor-line"/>
+              <line x1="45" y1="30" x2="35" y2="42" class="seq-actor-line"/>
+              <line x1="45" y1="30" x2="55" y2="42" class="seq-actor-line"/>
+              <text x="45" y="54" class="seq-actor-name" text-anchor="middle">:NhaSi</text>
+              <line x1="45" y1="58" x2="45" y2="350" class="seq-lifeline"/>
             </g>
 
             <!-- ACTIVATION BARS -->

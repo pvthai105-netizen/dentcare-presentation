@@ -1271,6 +1271,38 @@ body {
 .seq-msg.danger { fill: var(--danger); }
 .seq-msg.success { fill: var(--success); }
 
+/* Sequence UML Stickman Actor Styling */
+.seq-actor-head { cursor: default; }
+.seq-actor-head-circle {
+  fill: var(--bg-card);
+  stroke: var(--brand-primary);
+  stroke-width: 2.2;
+}
+.seq-actor-line {
+  stroke: var(--brand-primary);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.seq-actor-name {
+  font-size: 11px;
+  font-weight: 800;
+  fill: var(--text-main);
+  font-family: var(--font-sans);
+}
+
+[data-theme="dark"] .seq-actor-head-circle {
+  fill: var(--bg-card);
+  stroke: var(--accent-cyan);
+}
+[data-theme="dark"] .seq-actor-line {
+  stroke: var(--accent-cyan);
+}
+[data-theme="dark"] .seq-life-box {
+  fill: #1E293B;
+  stroke: #334155;
+  stroke-width: 1;
+}
+
 /* ---------------- SLIDE 17: ACCORDION RULES ---------------- */
 .rules-grid {
   display: grid;
