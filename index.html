@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DentCare - Hệ Thống Quản Lý Phòng Khám Nha Khoa (Interactive Deck)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- GLOBAL SVG DEFINITIONS (MARKERS DÙNG CHUNG TOÀN HỆ THỐNG TRÁNH LỖI MŨI TÊN)
+  <svg style="display: none;" aria-hidden="true">
+    <defs>
+      <marker id="global-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--brand-primary)"/>
+      </marker>
+      <marker id="global-arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--danger)"/>
+      </marker>
+      <marker id="global-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--success)"/>
+      </marker>
+      <marker id="global-open-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="var(--brand-primary)" stroke-width="2" stroke-linecap="round"/>
+      </marker>
+      <marker id="global-open-arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round"/>
+      </marker>
+    </defs>
+  </svg> -->
+
+  <!-- NAVIGATION HEADER -->
+  <header class="pres-header">
+    <div class="brand" id="brandLogo" title="Bấm 5 lần để kích hoạt Easter Egg!">
+      <i class="fa-solid fa-tooth brand-icon"></i>
+      <span>DentCare <strong>ISAD ProDeck</strong></span>
+    </div>
+    
+    <div class="slide-nav-controls">
+      <button id="btnOverview" class="ctrl-btn" title="Tổng quan slide (Phím O)" aria-label="Overview"><i class="fa-solid fa-table-cells"></i></button>
+      <button id="btnThemeToggle" class="ctrl-btn" title="Đổi giao diện Sáng/Tối (Phím T)" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+      <div class="divider-v"></div>
+      <button id="btnPrev" class="ctrl-btn" title="Slide trước (← / Phím PgUp)" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+      <span id="slideCounter" class="counter">01 / 20</span>
+      <button id="btnNext" class="ctrl-btn" title="Slide sau (→ / Phím Space / PgDn)" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+      <button id="btnFullscreen" class="ctrl-btn" title="Toàn màn hình (Phím F)" aria-label="Fullscreen"><i class="fa-solid fa-expand"></i></button>
+    </div>
+
+    <div class="progress-bar-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+  </header>
+
+  <!-- VIEWPORT CONTAINER -->
+  <main class="deck-viewport" id="viewport">
+
+    <!-- SLIDE 1: INTERACTIVE COVER -->
+    <section class="slide active" data-slide="1">
+      <div class="slide-content cover-interactive-grid">
+        <div class="cover-left">
+          <div class="cover-badge" data-animate style="--delay: 100ms;">
+            <i class="fa-solid fa-shield-halved"></i> Mini Project Phân tích & Thiết kế HTTT
+          </div>
+          <h1 class="hero-title" data-animate style="--delay: 200ms;">DENTCARE</h1>
+          <h2 class="hero-subtitle" data-animate style="--delay: 300ms;">Hệ Thống Số Hóa Quản Lý Phòng Khám Nha Khoa</h2>
+          <p class="hero-desc" data-animate style="--delay: 400ms;">
+            Nền tảng vận hành tập trung: Đồng bộ lịch khám, lưu trữ bệnh án điện tử, tự động hóa viện phí và phân tích doanh thu theo thời gian thực.
+          </p>
+
+          <div class="meta-box-grid" data-animate style="--delay: 500ms;">
+            <div class="meta-card">
+              <i class="fa-solid fa-users"></i>
+              <div>
+                <span class="label">Team chill</span>
+                <strong>Nhóm 4</strong>
+              </div>
+            </div>
+            <div class="meta-card">
+              <i class="fa-solid fa-user-graduate"></i>
+              <div>
+                <span class="label">Thành viên đề tài</span>
+                <strong class="members-list">
+                  <span>• Phạm Văn Thái</span> 
+                  <span>• Vũ Quang Việt</span>
+                  <span>• Trương Công Duy</span>
+                  <span>• Vũ Nhất Thống</span>
+                  <span>• Đặng Thị Thu Cúc</span>
+                  <span>• Mai Trọng Doanh</span>
+                  <span>• Nguyễn Phạm Hoàng Trung</span>
+                </strong>
+              </div>
+            </div>
+            <div class="meta-card">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <div>
+                <span class="label">Giảng viên hướng dẫn</span>
+                <strong>Thầy Phạm Tuấn Bình &amp; Thầy Mai Xuân Chinh</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: INTERACTIVE MINI DENTAL DASHBOARD -->
+        <div class="cover-right" data-animate style="--delay: 400ms;">
+          <div class="hero-mockup-window glass-panel">
+            <div class="window-bar">
+              <span class="win-dot red"></span>
+              <span class="win-dot yellow"></span>
+              <span class="win-dot green"></span>
+              <span class="win-title"><i class="fa-solid fa-heart-pulse"></i> DentCare Live Monitor</span>
+            </div>
+            <div class="window-content">
+              <div class="dash-kpi-compact">
+                <div class="dash-kpi-item">
+                  <span class="dash-kpi-title">Ca khám hôm nay</span>
+                  <div class="dash-kpi-num"><span class="counter-num" data-target="24">0</span> <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12%</span></div>
+                </div>
+                <div class="dash-kpi-item">
+                  <span class="dash-kpi-title">Doanh thu ngày</span>
+                  <div class="dash-kpi-num"><span class="counter-num" data-target="18400000" data-format="currency">0</span></div>
+                </div>
+              </div>
+
+              <!-- Animated Mini Chart -->
+              <div class="mini-chart-box">
+                <div class="chart-title-sm">Lưu lượng bệnh nhân theo giờ</div>
+                <svg class="mini-svg-chart" viewBox="0 0 280 80">
+                  <path class="chart-path-bg" d="M 0,60 Q 40,20 80,45 T 160,25 T 240,10 L 280,30 L 280,80 L 0,80 Z"/>
+                  <path class="chart-path-line" d="M 0,60 Q 40,20 80,45 T 160,25 T 240,10 L 280,30"/>
+                  <circle cx="80" cy="45" r="4" class="chart-dot pulse"/>
+                  <circle cx="160" cy="25" r="4" class="chart-dot pulse"/>
+                  <circle cx="240" cy="10" r="4" class="chart-dot pulse"/>
+                </svg>
+              </div>
+
+              <!-- Live Calendar Slot Chips -->
+              <div class="dash-chips-box">
+                <div class="chip-item status-busy">
+                  <i class="fa-regular fa-clock"></i> 08:30 - BS. An (Trám răng)
+                </div>
+                <div class="chip-item status-avail">
+                  <i class="fa-regular fa-calendar-plus"></i> 09:30 - [Khung giờ trống]
+                </div>
+                <div class="chip-item status-busy">
+                  <i class="fa-regular fa-clock"></i> 10:15 - BS. Bình (Implant)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: INTERACTIVE CURRENT PROBLEMS -->
+    <section class="slide" data-slide="2">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Thực trạng nghiệp vụ</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Những Vấn Đề Vận Hành Trầm Trọng Tại DentCare</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;"><i class="fa-solid fa-hand-pointer"></i> Nhấp chuột vào từng thẻ để khám phá phân tích chi tiết và hệ quả thực tế.</p>
+        
+        <div class="card-grid-5">
+          <div class="interactive-card problem-card" data-problem="1" data-animate style="--delay: 300ms;">
+            <div class="icon-wrap danger"><i class="fa-solid fa-book-bookmark"></i></div>
+            <h3>Sổ Tay Lịch Hẹn</h3>
+            <p>Ghi chép lịch hẹn bằng tay trên sổ cái dễ thất lạc và xung đột ca trực.</p>
+            <span class="card-action-hint">Khám phá chi tiết →</span>
+          </div>
+          <div class="interactive-card problem-card" data-problem="2" data-animate style="--delay: 350ms;">
+            <div class="icon-wrap danger"><i class="fa-solid fa-box-archive"></i></div>
+            <h3>Bệnh Án Giấy Tờ</h3>
+            <p>Lưu trữ vật lý gây khó khăn khi tra cứu tiền sử bệnh nha chu cũ.</p>
+            <span class="card-action-hint">Khám phá chi tiết →</span>
+          </div>
+          <div class="interactive-card problem-card" data-problem="3" data-animate style="--delay: 400ms;">
+            <div class="icon-wrap danger"><i class="fa-solid fa-receipt"></i></div>
+            <h3>Hóa Đơn Viết Tay</h3>
+            <p>Nguy cơ sai lệch đơn giá thủ thuật, thất thoát tài chính phòng khám.</p>
+            <span class="card-action-hint">Khám phá chi tiết →</span>
+          </div>
+          <div class="interactive-card problem-card" data-problem="4" data-animate style="--delay: 450ms;">
+            <div class="icon-wrap danger"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Mù Mờ Doanh Thu</h3>
+            <p>Mất nhiều ngày cộng dồn sổ sách, ban quản lý thiếu số liệu tức thời.</p>
+            <span class="card-action-hint">Khám phá chi tiết →</span>
+          </div>
+          <div class="interactive-card problem-card" data-problem="5" data-animate style="--delay: 500ms;">
+            <div class="icon-wrap danger"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>Trùng Lịch Khám</h3>
+            <p>Không có cơ chế khóa khung giờ, nha sĩ bị phân bổ hai khách cùng lúc.</p>
+            <span class="card-action-hint">Khám phá chi tiết →</span>
+          </div>
+        </div>
+
+        <div class="solution-banner" data-animate style="--delay: 600ms;">
+          <div class="banner-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div class="banner-text">
+            <strong>CHIẾN LƯỢC ĐỔI MỚI:</strong> Số hóa hợp nhất dữ liệu trên nền tảng <strong>DentCare System</strong>, triệt tiêu 100% rủi ro từ quy trình giấy tờ thủ công.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: INTERACTIVE SYSTEM FLOW -->
+    <section class="slide" data-slide="3">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Kiến trúc mục tiêu</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">5 Trụ Cột Số Hóa &amp; Chuỗi Giá Trị Nghiệp Vụ</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;"><i class="fa-solid fa-circle-info"></i> Bấm vào từng bước trong quy trình để xem thành phần dữ liệu và lớp xử lý tương ứng.</p>
+
+        <!-- Interactive Process Chain -->
+        <div class="process-interactive-chain" data-animate style="--delay: 350ms;">
+          <div class="chain-node active" data-step="1">
+            <div class="node-icon"><i class="fa-regular fa-calendar-check"></i></div>
+            <div class="node-title">1. Đặt Lịch</div>
+            <div class="node-sub">Schedule</div>
+          </div>
+          <div class="chain-connector"><div class="connector-line"></div></div>
+          <div class="chain-node" data-step="2">
+            <div class="node-icon"><i class="fa-solid fa-user-doctor"></i></div>
+            <div class="node-title">2. Khám Bệnh</div>
+            <div class="node-sub">Examine</div>
+          </div>
+          <div class="chain-connector"><div class="connector-line"></div></div>
+          <div class="chain-node" data-step="3">
+            <div class="node-icon"><i class="fa-solid fa-file-medical"></i></div>
+            <div class="node-title">3. Bệnh Án</div>
+            <div class="node-sub">Medical Record</div>
+          </div>
+          <div class="chain-connector"><div class="connector-line"></div></div>
+          <div class="chain-node" data-step="4">
+            <div class="node-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <div class="node-title">4. Tạo Hóa Đơn</div>
+            <div class="node-sub">Invoice</div>
+          </div>
+          <div class="chain-connector"><div class="connector-line"></div></div>
+          <div class="chain-node" data-step="5">
+            <div class="node-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div class="node-title">5. Thanh Toán</div>
+            <div class="node-sub">Payment</div>
+          </div>
+          <div class="chain-connector"><div class="connector-line"></div></div>
+          <div class="chain-node" data-step="6">
+            <div class="node-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <div class="node-title">6. Báo Cáo</div>
+            <div class="node-sub">Reporting</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Inspector Panel -->
+        <div class="flow-inspector-panel glass-panel" id="flowInspector" data-animate style="--delay: 450ms;">
+          <div class="inspector-badge" id="inspBadge">BƯỚC 1: ĐẶT LỊCH HẸN</div>
+          <div class="inspector-grid">
+            <div class="insp-col">
+              <span class="insp-label"><i class="fa-solid fa-users"></i> Actor chính:</span>
+              <strong id="inspActor">Bệnh nhân (Online) hoặc Lễ tân (Tại quầy/Tổng đài)</strong>
+            </div>
+            <div class="insp-col">
+              <span class="insp-label"><i class="fa-solid fa-bolt"></i> Chức năng cốt lõi:</span>
+              <span id="inspFunction">Kiểm tra khung giờ trống nha sĩ, xác lập Appointment, gửi thông báo xác nhận.</span>
+            </div>
+            <div class="insp-col">
+              <span class="insp-label"><i class="fa-solid fa-diagram-project"></i> Lớp thực thể liên quan:</span>
+              <div class="tags-row" id="inspClasses">
+                <span class="code-badge">Patient</span>
+                <span class="code-badge">Appointment</span>
+                <span class="code-badge">Dentist</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: IS COMPONENTS & TPS -->
+    <section class="slide" data-slide="4">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Cơ sở lý thuyết</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">5 Thành Phần HTTT &amp; Định Vị Hệ Thống TPS</h2>
+        <div class="is-layout">
+          <div class="is-pentagon-grid" data-animate style="--delay: 300ms;">
+            <div class="is-item interactive-card" data-tip="Thiết bị đầu cuối tiếp nhận giao dịch"><i class="fa-solid fa-server"></i><strong>Hardware</strong>Cloud Cluster, Tablet khám, POS thanh toán</div>
+            <div class="is-item interactive-card" data-tip="Hạ tầng ứng dụng và cơ sở dữ liệu"><i class="fa-solid fa-code"></i><strong>Software</strong>DentCare SaaS, RESTful API, PostgreSQL</div>
+            <div class="is-item highlight-center">
+              <i class="fa-solid fa-tooth"></i>
+              <h3>DENTCARE</h3>
+              <span>Nền Tảng HTTT Nha Khoa</span>
+            </div>
+            <div class="is-item interactive-card" data-tip="Kho dữ liệu cấu trúc chuẩn hóa"><i class="fa-solid fa-database"></i><strong>Data</strong>Patients, Records, Invoices, Slots</div>
+            <div class="is-item interactive-card" data-tip="Quy tắc vận hành chuẩn lâm sàng"><i class="fa-solid fa-list-check"></i><strong>Procedures</strong>SOP tiếp nhận bệnh nhân, phác đồ điều trị</div>
+            <div class="is-item interactive-card" data-tip="Nhân sự vận hành trực tiếp"><i class="fa-solid fa-users-gear"></i><strong>People</strong>Bác sĩ, Điều dưỡng, Tiếp tân, Nhà quản lý</div>
+          </div>
+          
+          <div class="is-classification-box glass-panel" data-animate style="--delay: 450ms;">
+            <div class="badge-tps">Phân loại: TPS (Transaction Processing System)</div>
+            <h3>Hệ Thống Xử Lý Giao Dịch Nghiệp Vụ</h3>
+            <p>DentCare vận hành ở tầng cốt lõi tác nghiệp hàng ngày, kiểm soát các giao dịch có tính toán vẹn ACID cao:</p>
+            <div class="tps-transaction-items">
+              <div class="tps-row"><i class="fa-solid fa-check-double"></i> <strong>Giao dịch lịch hẹn:</strong> Khóa timeSlot theo thời gian thực.</div>
+              <div class="tps-row"><i class="fa-solid fa-check-double"></i> <strong>Giao dịch lâm sàng:</strong> Bệnh án tạo ra không thể chỉnh sửa sai quy trình.</div>
+              <div class="tps-row"><i class="fa-solid fa-check-double"></i> <strong>Giao dịch viện phí:</strong> Lập hóa đơn chính xác từ danh mục và đơn giá dịch vụ.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: SDLC & AGILE -->
+    <section class="slide" data-slide="5">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Phương pháp luận</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Vòng Đời SDLC &amp; Định Hướng Phát Triển Agile</h2>
+        
+        <div class="sdlc-timeline" data-animate style="--delay: 300ms;">
+          <div class="sdlc-node"><span class="badge">1</span><strong>Planning</strong>Xác lập đề tài</div>
+          <div class="sdlc-node"><span class="badge">2</span><strong>Requirements</strong>Khảo sát phòng khám</div>
+          <div class="sdlc-node active pulse"><span class="badge">3</span><strong>Analysis</strong>UML &amp; Luồng dữ liệu</div>
+          <div class="sdlc-node active"><span class="badge">4</span><strong>Design</strong>CSDL &amp; Kiến trúc</div>
+          <div class="sdlc-node"><span class="badge">5</span><strong>Development</strong>Coding Module</div>
+          <div class="sdlc-node"><span class="badge">6</span><strong>Testing</strong>Kiểm thử UAT</div>
+          <div class="sdlc-node"><span class="badge">7</span><strong>Deployment</strong>Triển khai Cloud</div>
+          <div class="sdlc-node"><span class="badge">8</span><strong>Maintenance</strong>Hỗ trợ vận hành</div>
+        </div>
+
+        <div class="agile-reasons-grid" data-animate style="--delay: 450ms;">
+          <div class="agile-reason-card interactive-card">
+            <div class="num-tag">01</div>
+            <h3>Đa Dạng Nhóm Stakeholders</h3>
+            <p>4 nhóm người dùng có thói quen tác nghiệp khác nhau; Agile giúp lấy phản hồi (Review) thường xuyên qua từng Sprint.</p>
+          </div>
+          <div class="agile-reason-card interactive-card">
+            <div class="num-tag">02</div>
+            <h3>Thích Ứng Linh Hoạt Thay Đổi</h3>
+            <p>Chính sách bảo hiểm, khuyến mãi và phác đồ dịch vụ có thể điều chỉnh; cấu trúc Agile hạn chế rủi ro đập đi xây lại.</p>
+          </div>
+          <div class="agile-reason-card interactive-card">
+            <div class="num-tag">03</div>
+            <h3>Phát Triển Lũy Tiến Từng Khối</h3>
+            <p>Bàn giao ngay giá trị sử dụng: <em>Sprint 1 (Đặt lịch) → Sprint 2 (Khám bệnh) → Sprint 3 (Thanh toán) → Sprint 4 (Báo cáo).</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: STAKEHOLDERS -->
+    <section class="slide" data-slide="6">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Khảo sát &amp; Yêu cầu</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Các Bên Liên Quan &amp; Kỹ Thuật Lấy Yêu Cầu</h2>
+        
+        <div class="table-container" data-animate style="--delay: 300ms;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Stakeholder</th>
+                <th>Trách Nhiệm Chính</th>
+                <th>Nhu Cầu Nghiệp Vụ Cốt Lõi</th>
+                <th>Kỹ Thuật Thu Thập Áp Dụng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="role-pill patient"><i class="fa-solid fa-user"></i> Bệnh Nhân</span></td>
+                <td>Đối tượng thụ hưởng dịch vụ nha khoa</td>
+                <td>Đặt lịch online tiện lợi, nhắc hẹn SMS, theo dõi hồ sơ</td>
+                <td><strong>Survey (Bảng hỏi)</strong> &amp; Phỏng vấn mẫu</td>
+              </tr>
+              <tr>
+                <td><span class="role-pill receptionist"><i class="fa-solid fa-headset"></i> Lễ Tân</span></td>
+                <td>Điều phối ca khám, tiếp đón tại quầy</td>
+                <td>Tra cứu nhanh slot trống, tiếp nhận khách, xuất hóa đơn</td>
+                <td><strong>Observation (Quan sát trực tiếp)</strong></td>
+              </tr>
+              <tr>
+                <td><span class="role-pill dentist"><i class="fa-solid fa-user-doctor"></i> Nha Sĩ</span></td>
+                <td>Chuyên viên điều trị và thủ thuật</td>
+                <td>Xem lịch hẹn cá nhân, lập chẩn đoán và đơn dịch vụ</td>
+                <td><strong>In-depth Interview (Phỏng vấn sâu)</strong></td>
+              </tr>
+              <tr>
+                <td><span class="role-pill manager"><i class="fa-solid fa-user-tie"></i> Quản Lý</span></td>
+                <td>Điều hành phòng khám và kế toán</td>
+                <td>Cấu hình bảng giá dịch vụ, theo dõi biểu đồ doanh thu</td>
+                <td><strong>Document Analysis (Phân tích sổ sách)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sources-card-grid" data-animate style="--delay: 450ms;">
+          <div class="source-item"><i class="fa-solid fa-people-arrows"></i> <strong>Con người:</strong> Đội ngũ y bác sĩ, điều dưỡng &amp; bệnh nhân.</div>
+          <div class="source-item"><i class="fa-solid fa-folder-tree"></i> <strong>Hệ thống hiện tại:</strong> Sổ sách thủ công và bảng tính Excel phân tán.</div>
+          <div class="source-item"><i class="fa-solid fa-file-invoice"></i> <strong>Tài liệu pháp lý:</strong> Quy định bệnh án và mẫu biểu thanh toán y tế.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: FUNCTIONAL & NON-FUNCTIONAL REQUIREMENTS -->
+    <section class="slide" data-slide="7">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Đặc tả yêu cầu</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Yêu Cầu Chức Năng (FR) &amp; Phi Chức Năng (NFR)</h2>
+        
+        <div class="req-split-grid">
+          <div class="req-box fr glass-panel" data-animate style="--delay: 300ms;">
+            <div class="req-header"><i class="fa-solid fa-list-check text-primary"></i> Functional Requirements (FR)</div>
+            <ul class="req-list">
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-01:</strong> Đặt và phân bổ lịch hẹn theo bác sĩ / ca khám.</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-02:</strong> Quản lý hồ sơ định danh và tiền sử bệnh lý khách hàng.</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-03:</strong> Chẩn đoán và ghi nhận kết quả khám lâm sàng.</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-04:</strong> Lưu trữ phác đồ điều trị (Medical Record).</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-05:</strong> Tự động tính tiền và lập hóa đơn (Invoice).</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-06:</strong> Ghi nhận thanh toán đa phương thức (Tiền mặt / Chuyển khoản).</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-07:</strong> Cấu hình danh mục dịch vụ và bảng giá nha khoa.</li>
+              <li><i class="fa-solid fa-circle-check"></i> <strong>FR-08:</strong> Kết xuất báo cáo doanh thu &amp; tần suất dịch vụ.</li>
+            </ul>
+          </div>
+
+          <div class="req-box nfr glass-panel" data-animate style="--delay: 450ms;">
+            <div class="req-header"><i class="fa-solid fa-shield-halved text-success"></i> Non-Functional Requirements (NFR)</div>
+            <ul class="req-list">
+              <li><i class="fa-solid fa-bolt"></i> <strong>NFR-01 (Hiệu năng):</strong> Phản hồi thao tác thông thường ≤ 2.0s.</li>
+              <li><i class="fa-solid fa-lock"></i> <strong>NFR-02 (Bảo mật):</strong> Mã hóa mật khẩu, phân tách dữ liệu y tế nhạy cảm.</li>
+              <li><i class="fa-solid fa-id-card-clip"></i> <strong>NFR-03 (Phân quyền):</strong> Kiểm soát truy cập RBAC nghiêm ngặt theo 4 vai trò.</li>
+              <li><i class="fa-solid fa-database"></i> <strong>NFR-04 (Toàn vẹn):</strong> Giao dịch ACID chống trùng lịch nha sĩ tuyệt đối.</li>
+              <li><i class="fa-solid fa-clock-rotate-left"></i> <strong>NFR-05 (Lưu trữ):</strong> Lưu trữ vĩnh viễn hồ sơ và chứng từ tài chính cũ.</li>
+              <li><i class="fa-solid fa-desktop"></i> <strong>NFR-06 (Khả dụng):</strong> Tương thích giao diện Tablet cho bác sĩ tại ghế khám.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: USER STORIES -->
+    <section class="slide" data-slide="8">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Agile Requirements</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">User Stories Trọng Tâm Theo 4 Nhóm Đối Tượng</h2>
+        
+        <div class="card-grid-4">
+          <div class="story-card interactive-card" data-animate style="--delay: 300ms;">
+            <div class="story-badge receptionist">Lễ Tân (Receptionist)</div>
+            <div class="story-body">
+              <p><strong>As a</strong> receptionist,</p>
+              <p><strong>I want to</strong> schedule appointments on an interactive calendar matrix,</p>
+              <p><strong>So that</strong> patients have reserved slots without doctor scheduling conflicts.</p>
+            </div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Khóa slot tức thì</div>
+          </div>
+
+          <div class="story-card interactive-card" data-animate style="--delay: 350ms;">
+            <div class="story-badge dentist">Nha Sĩ (Dentist)</div>
+            <div class="story-body">
+              <p><strong>As a</strong> dentist,</p>
+              <p><strong>I want to</strong> record diagnosis results and treatment steps directly,</p>
+              <p><strong>So that</strong> clinical history is preserved safely for future consultations.</p>
+            </div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Lưu đơn thuốc &amp; dịch vụ</div>
+          </div>
+
+          <div class="story-card interactive-card" data-animate style="--delay: 400ms;">
+            <div class="story-badge patient">Bệnh Nhân (Patient)</div>
+            <div class="story-body">
+              <p><strong>As a</strong> patient,</p>
+              <p><strong>I want to</strong> receive SMS alerts and check my dental treatment history,</p>
+              <p><strong>So that</strong> I can attend appointments punctually and track recovery.</p>
+            </div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Bảo mật thông tin riêng</div>
+          </div>
+
+          <div class="story-card interactive-card" data-animate style="--delay: 450ms;">
+            <div class="story-badge manager">Quản Lý (Manager)</div>
+            <div class="story-body">
+              <p><strong>As a</strong> clinic manager,</p>
+              <p><strong>I want to</strong> view periodic revenue dashboards and service usage stats,</p>
+              <p><strong>So that</strong> I can make evidence-based clinic resource decisions.</p>
+            </div>
+            <div class="story-footer"><i class="fa-solid fa-circle-check"></i> Tiêu chí nghiệm thu: Lọc doanh thu ngày/tháng</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- SLIDE 9: INTERACTIVE ACTIVITY - BOOKING FLOW (SELF-CONTAINED DEFS & NO-FILL PATHS) -->
+    <section class="slide" data-slide="9">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Behavioral Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Activity Diagram: Quy Trình Đặt Lịch Hẹn</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;">
+          <i class="fa-solid fa-play"></i> Bấm nút <strong>"Mô phỏng luồng"</strong> để xem xung nhịp điều khiển, hoặc nhấp vào hình thoi <strong>Decision</strong> để chuyển đổi điều kiện rẽ nhánh.
+        </p>
+
+        <div class="diagram-toolbar">
+          <button id="btnSimulateActivity" class="action-btn small"><i class="fa-solid fa-play"></i> Mô phỏng luồng đặt lịch</button>
+          <button id="btnToggleSlotBranch" class="action-btn small secondary"><i class="fa-solid fa-shuffle"></i> Đổi nhánh: <span id="currentSlotStatus">Còn slot trống</span></button>
+          <span class="info-tag-sm" id="activitySimStatus">Sẵn sàng</span>
+        </div>
+
+        <div class="diagram-wrapper glass-panel" data-animate style="--delay: 350ms;">
+          <svg class="uml-svg" id="svgActivityBooking" viewBox="0 0 960 380">
+            <!-- LOCAL DEFS: Đảm bảo luôn hiển thị mũi tên ở mọi chế độ render -->
+            <defs>
+              <marker id="s9-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+              </marker>
+              <marker id="s9-arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#DC2626"/>
+              </marker>
+            </defs>
+
+            <!-- Initial Node -->
+            <circle cx="60" cy="180" r="14" fill="#0B192C" stroke="#0284C7" stroke-width="3" id="actNode0"/>
+            <text x="60" y="215" class="svg-label" text-anchor="middle">Bắt đầu</text>
+
+            <line x1="74" y1="180" x2="130" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+
+            <!-- Action 1 -->
+            <g id="actNode1" class="interactive-svg-node" data-desc="Bệnh nhân cung cấp nhu cầu khám và chọn nha sĩ">
+              <rect x="130" y="155" width="160" height="50" rx="10" class="svg-action"/>
+              <text x="210" y="185" class="svg-action-text" text-anchor="middle">Yêu cầu đặt lịch hẹn</text>
+            </g>
+
+            <line x1="290" y1="180" x2="345" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+
+            <!-- Merge Node -->
+            <polygon points="360,170 375,180 360,190 345,180" fill="#E0F2FE" stroke="#0284C7" stroke-width="2" id="actMerge"/>
+
+            <line x1="375" y1="180" x2="415" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+
+            <!-- Action 2 -->
+            <g id="actNode2" class="interactive-svg-node" data-desc="Hệ thống truy vấn cơ sở dữ liệu để tìm timeSlot còn trống">
+              <rect x="415" y="155" width="160" height="50" rx="10" class="svg-action"/>
+              <text x="495" y="185" class="svg-action-text" text-anchor="middle">Kiểm tra lịch trống nha sĩ</text>
+            </g>
+
+            <line x1="575" y1="180" x2="620" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+
+            <!-- Decision Node -->
+            <g id="actNodeDecision" class="interactive-svg-node" style="cursor: pointer;" data-desc="Kiểm tra slot: nếu còn -> đặt lịch, nếu hết -> đề xuất giờ khác">
+              <polygon points="655,155 690,180 655,205 620,180" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
+              <text x="655" y="145" class="svg-guard" text-anchor="middle">Còn slot?</text>
+            </g>
+
+            <!-- Branch YES: Tạo appointment -->
+            <g id="branchYes">
+              <line x1="690" y1="180" x2="745" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+              <text x="715" y="170" class="svg-guard">[Có]</text>
+
+              <g id="actNode3" class="interactive-svg-node" data-desc="Tạo bản ghi Appointment trạng thái ĐÃ XÁC NHẬN">
+                <rect x="745" y="155" width="130" height="50" rx="10" class="svg-action success-act"/>
+                <text x="810" y="185" class="svg-action-text" text-anchor="middle">Tạo Appointment</text>
+              </g>
+
+              <line x1="875" y1="180" x2="905" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s9-arrow-blue)"/>
+
+              <circle cx="920" cy="180" r="14" fill="#FFFFFF" stroke="#0B192C" stroke-width="2"/>
+              <circle cx="920" cy="180" r="8" fill="#0B192C"/>
+              <text x="920" y="215" class="svg-label" text-anchor="middle">Kết thúc</text>
+            </g>
+
+            <!-- Branch NO: Đã gán fill="none" tuyệt đối -->
+            <g id="branchNo">
+              <path d="M 655 205 L 655 295 L 575 295" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#s9-arrow-red)"/>
+              <text x="665" y="245" class="svg-guard danger">[Hết slot]</text>
+
+              <g id="actNode4" class="interactive-svg-node" data-desc="Gợi ý 3 khung giờ gần nhất còn trống">
+                <rect x="415" y="270" width="160" height="50" rx="10" class="svg-action warning-act"/>
+                <text x="495" y="300" class="svg-action-text" text-anchor="middle">Đề xuất khung giờ khác</text>
+              </g>
+
+              <!-- Quay về merge node -->
+              <path d="M 415 295 L 360 295 L 360 195" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#s9-arrow-red)"/>
+              <text x="325" y="280" class="svg-guard" text-anchor="middle">Chọn lại</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: ACTIVITY - SWIMLANE (LÀN KHÁM & THANH TOÁN) -->
+    <section class="slide" data-slide="10">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Behavioral Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Activity Swimlane: Quy Trình Khám Bệnh &amp; Thanh Toán</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;">
+          <i class="fa-solid fa-circle-exclamation"></i> Ràng buộc nghiệp vụ: <strong>Invoice chỉ được tạo sau khi MedicalRecord đã hoàn tất lưu trữ.</strong>
+        </p>
+
+        <div class="diagram-wrapper glass-panel" data-animate style="--delay: 350ms;">
+          <svg class="uml-svg" viewBox="0 0 960 380">
+            <defs>
+              <marker id="s10-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+              </marker>
+            </defs>
+
+            <!-- 3 Swimlanes -->
+            <rect x="20" y="20" width="300" height="340" fill="var(--bg-main)" stroke="var(--border-light)" stroke-width="2" rx="8"/>
+            <rect x="320" y="20" width="320" height="340" fill="var(--bg-card)" stroke="var(--border-light)" stroke-width="2" rx="8"/>
+            <rect x="640" y="20" width="300" height="340" fill="var(--bg-main)" stroke="var(--border-light)" stroke-width="2" rx="8"/>
+
+            <!-- Headers -->
+            <text x="170" y="48" class="swimlane-title" text-anchor="middle"><tspan font-weight="700">LÀN 1:</tspan> BỆNH NHÂN</text>
+            <text x="480" y="48" class="swimlane-title" text-anchor="middle"><tspan font-weight="700">LÀN 2:</tspan> NHA SĨ</text>
+            <text x="790" y="48" class="swimlane-title" text-anchor="middle"><tspan font-weight="700">LÀN 3:</tspan> LỄ TÂN</text>
+
+            <!-- Initial -->
+            <circle cx="170" cy="85" r="11" fill="#0B192C"/>
+            <line x1="170" y1="96" x2="170" y2="125" stroke="#0284C7" stroke-width="2" marker-end="url(#s10-arrow-blue)"/>
+
+            <!-- Action 1 -->
+            <g class="interactive-svg-node" data-desc="Bệnh nhân check-in tại quầy và vào phòng khám chuyên khoa">
+              <rect x="95" y="125" width="150" height="40" rx="8" class="svg-action"/>
+              <text x="170" y="150" class="svg-action-text" text-anchor="middle">Đến khám theo hẹn</text>
+            </g>
+
+            <line x1="245" y1="145" x2="395" y2="145" stroke="#0284C7" stroke-width="2" marker-end="url(#s10-arrow-blue)"/>
+
+            <!-- Action 2 -->
+            <g class="interactive-svg-node" data-desc="Nha sĩ thực hiện khám tổng quát, chụp X-quang và chẩn đoán">
+              <rect x="400" y="125" width="160" height="40" rx="8" class="svg-action"/>
+              <text x="480" y="150" class="svg-action-text" text-anchor="middle">Khám bệnh &amp; Chẩn đoán</text>
+            </g>
+
+            <line x1="480" y1="165" x2="480" y2="205" stroke="#0284C7" stroke-width="2" marker-end="url(#s10-arrow-blue)"/>
+
+            <!-- Action 3 -->
+            <g class="interactive-svg-node" data-desc="Ghi nhận dịch vụ đã làm, chỉ định thủ thuật và đơn thuốc">
+              <rect x="390" y="205" width="180" height="40" rx="8" class="svg-action"/>
+              <text x="480" y="230" class="svg-action-text" text-anchor="middle">Ghi MedicalRecord</text>
+            </g>
+
+            <!-- Chuyển sang Lễ tân -->
+            <line x1="570" y1="225" x2="705" y2="225" stroke="#0284C7" stroke-width="2" marker-end="url(#s10-arrow-blue)"/>
+
+            <!-- Action 4 -->
+            <g class="interactive-svg-node" data-desc="Lễ tân tạo hóa đơn từ danh mục dịch vụ nha sĩ đã ghi">
+              <rect x="710" y="205" width="160" height="40" rx="8" class="svg-action success-act"/>
+              <text x="790" y="230" class="svg-action-text" text-anchor="middle">Tạo Invoice thanh toán</text>
+            </g>
+
+            <!-- Đường chuyển về Bệnh nhân: Khóa cứng fill="none" vuông góc -->
+            <path d="M 790 245 L 790 300 L 255 300" fill="none" stroke="#0284C7" stroke-width="2" marker-end="url(#s10-arrow-blue)"/>
+
+            <!-- Action 5 -->
+            <g class="interactive-svg-node" data-desc="Bệnh nhân thanh toán viện phí bằng tiền mặt hoặc QR chuyển khoản">
+              <rect x="95" y="280" width="155" height="40" rx="8" class="svg-action"/>
+              <text x="172" y="305" class="svg-action-text" text-anchor="middle">Thực hiện thanh toán</text>
+            </g>
+
+            <line x1="172" y1="320" x2="172" y2="345" stroke="#0284C7" stroke-width="2" marker-end="url(#s10-arrow-blue)"/>
+
+            <!-- Final -->
+            <circle cx="172" cy="355" r="11" fill="#FFFFFF" stroke="#0B192C" stroke-width="2"/>
+            <circle cx="172" cy="355" r="6" fill="#0B192C"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: INTERACTIVE USE CASE DIAGRAM (CHUẨN UML: ACTOR KHÔNG CÓ MŨI TÊN, <<EXTEND>> TRỎ VỀ GỐC) -->
+    <section class="slide" data-slide="11">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Functional Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Use Case Diagram: Tương Tác Phân Rã Vai Trò</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;">
+          <i class="fa-solid fa-filter"></i> Nhấp vào một <strong>Actor</strong> để lọc phạm vi tác vụ. Nhấp vào <strong>&lt;&lt;include&gt;&gt;</strong> hoặc <strong>&lt;&lt;extend&gt;&gt;</strong> để xem giải thích chuẩn UML.
+        </p>
+
+        <div class="usecase-container">
+          <div class="diagram-wrapper glass-panel uc-canvas-box" data-animate style="--delay: 350ms;">
+            <svg class="uml-svg" id="svgUseCase" viewBox="0 0 960 410">
+              <defs>
+                <marker id="s11-open-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+                </marker>
+              </defs>
+
+              <!-- System Boundary -->
+              <rect x="220" y="15" width="520" height="380" rx="12" fill="var(--bg-main)" stroke="var(--border-light)" stroke-width="2" stroke-dasharray="6,4"/>
+              <text x="240" y="38" font-size="13" font-weight="700" fill="#0284C7">DentCare System Boundary</text>
+
+              <!-- ACTORS LEFT -->
+              <!-- Patient -->
+              <g class="uc-actor" data-actor="patient" transform="translate(60, 80)">
+                <circle cx="30" cy="15" r="12" class="actor-head"/>
+                <line x1="30" y1="27" x2="30" y2="55" class="actor-bone"/>
+                <line x1="10" y1="38" x2="50" y2="38" class="actor-bone"/>
+                <line x1="30" y1="55" x2="15" y2="78" class="actor-bone"/>
+                <line x1="30" y1="55" x2="45" y2="78" class="actor-bone"/>
+                <text x="30" y="96" text-anchor="middle" class="actor-text">Patient</text>
+              </g>
+
+              <!-- Receptionist -->
+              <g class="uc-actor" data-actor="receptionist" transform="translate(60, 245)">
+                <circle cx="30" cy="15" r="12" class="actor-head"/>
+                <line x1="30" y1="27" x2="30" y2="55" class="actor-bone"/>
+                <line x1="10" y1="38" x2="50" y2="38" class="actor-bone"/>
+                <line x1="30" y1="55" x2="15" y2="78" class="actor-bone"/>
+                <line x1="30" y1="55" x2="45" y2="78" class="actor-bone"/>
+                <text x="30" y="96" text-anchor="middle" class="actor-text">Receptionist</text>
+              </g>
+
+              <!-- ACTORS RIGHT -->
+              <!-- Dentist -->
+              <g class="uc-actor" data-actor="dentist" transform="translate(850, 80)">
+                <circle cx="30" cy="15" r="12" class="actor-head"/>
+                <line x1="30" y1="27" x2="30" y2="55" class="actor-bone"/>
+                <line x1="10" y1="38" x2="50" y2="38" class="actor-bone"/>
+                <line x1="30" y1="55" x2="15" y2="78" class="actor-bone"/>
+                <line x1="30" y1="55" x2="45" y2="78" class="actor-bone"/>
+                <text x="30" y="96" text-anchor="middle" class="actor-text">Dentist</text>
+              </g>
+
+              <!-- Manager -->
+              <g class="uc-actor" data-actor="manager" transform="translate(850, 245)">
+                <circle cx="30" cy="15" r="12" class="actor-head"/>
+                <line x1="30" y1="27" x2="30" y2="55" class="actor-bone"/>
+                <line x1="10" y1="38" x2="50" y2="38" class="actor-bone"/>
+                <line x1="30" y1="55" x2="15" y2="78" class="actor-bone"/>
+                <line x1="30" y1="55" x2="45" y2="78" class="actor-bone"/>
+                <text x="30" y="96" text-anchor="middle" class="actor-text">Manager</text>
+              </g>
+
+              <!-- USE CASES -->
+              <g class="uc-bubble" id="uc-booking" data-roles="patient,receptionist">
+                <ellipse cx="360" cy="70" rx="85" ry="24" class="uc-ellipse"/>
+                <text x="360" y="74" class="uc-text">Đặt lịch hẹn</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-sms" data-roles="patient,receptionist">
+                <ellipse cx="600" cy="70" rx="80" ry="22" class="uc-ellipse sub"/>
+                <text x="600" y="74" class="uc-text">Gửi SMS nhắc hẹn</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-cancel" data-roles="patient,receptionist">
+                <ellipse cx="360" cy="135" rx="75" ry="22" class="uc-ellipse"/>
+                <text x="360" y="139" class="uc-text">Hủy lịch hẹn</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-exam" data-roles="dentist">
+                <ellipse cx="600" cy="135" rx="95" ry="24" class="uc-ellipse"/>
+                <text x="600" y="139" class="uc-text">Khám &amp; Ghi bệnh án</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-pay" data-roles="receptionist,patient">
+                <ellipse cx="360" cy="215" rx="75" ry="22" class="uc-ellipse"/>
+                <text x="360" y="219" class="uc-text">Thanh toán</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-invoice" data-roles="receptionist">
+                <ellipse cx="590" cy="215" rx="80" ry="22" class="uc-ellipse"/>
+                <text x="590" y="219" class="uc-text">Tạo hóa đơn</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-services" data-roles="manager">
+                <ellipse cx="600" cy="295" rx="85" ry="22" class="uc-ellipse"/>
+                <text x="600" y="299" class="uc-text">Quản lý dịch vụ</text>
+              </g>
+
+              <g class="uc-bubble" id="uc-reports" data-roles="manager">
+                <ellipse cx="600" cy="355" rx="90" ry="22" class="uc-ellipse"/>
+                <text x="600" y="359" class="uc-text">Xem báo cáo doanh thu</text>
+              </g>
+
+              <!-- ĐƯỜNG NỐI ACTOR: TUYỆT ĐỐI KHÔNG CÓ MŨI TÊN (CHUẨN UML ASSOCIATION) -->
+              <line x1="120" y1="115" x2="275" y2="72" class="uc-link" data-roles="patient" stroke="#475569" stroke-width="1.5"/>
+              <line x1="120" y1="270" x2="280" y2="80" class="uc-link" data-roles="receptionist" stroke="#475569" stroke-width="1.5"/>
+              <line x1="120" y1="275" x2="285" y2="135" class="uc-link" data-roles="receptionist" stroke="#475569" stroke-width="1.5"/>
+              <line x1="120" y1="280" x2="285" y2="215" class="uc-link" data-roles="receptionist" stroke="#475569" stroke-width="1.5"/>
+              <line x1="850" y1="115" x2="695" y2="135" class="uc-link" data-roles="dentist" stroke="#475569" stroke-width="1.5"/>
+              <line x1="850" y1="275" x2="685" y2="295" class="uc-link" data-roles="manager" stroke="#475569" stroke-width="1.5"/>
+              <line x1="850" y1="285" x2="690" y2="355" class="uc-link" data-roles="manager" stroke="#475569" stroke-width="1.5"/>
+
+              <!-- <<extend>>: MŨI TÊN NÉT ĐỨT TRỎ TỪ GỬI SMS VỀ ĐẶT LỊCH HẸN (CHUẨN UML) -->
+              <g class="uc-rel-trigger" data-type="extend">
+                <line x1="520" y1="70" x2="448" y2="70" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s11-open-arrow)"/>
+                <rect x="455" y="48" width="60" height="18" fill="var(--bg-card)" rx="4"/>
+                <text x="485" y="61" class="svg-stereo">&lt;&lt;extend&gt;&gt;</text>
+              </g>
+
+              <!-- <<include>>: MŨI TÊN NÉT ĐỨT TRỎ TỪ THANH TOÁN SANG TẠO HÓA ĐƠN -->
+              <g class="uc-rel-trigger" data-type="include">
+                <line x1="435" y1="215" x2="508" y2="215" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s11-open-arrow)"/>
+                <rect x="440" y="195" width="65" height="18" fill="var(--bg-card)" rx="4"/>
+                <text x="472" y="208" class="svg-stereo">&lt;&lt;include&gt;&gt;</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Drawer chi tiết vai trò -->
+          <div class="uc-role-drawer glass-panel" id="ucRoleDrawer">
+            <div class="drawer-header">
+              <span class="role-badge-lg" id="ucDrawerBadge">CHỌN VAI TRÒ</span>
+              <button id="btnResetUCActor" class="mini-icon-btn" title="Bỏ lọc"><i class="fa-solid fa-rotate-left"></i></button>
+            </div>
+            <h4 id="ucDrawerTitle">Tổng quan Actor</h4>
+            <p id="ucDrawerDesc">Nhấp vào một Actor ở diagram bên trái để lọc nhanh các Use Case được cấp quyền thực hiện.</p>
+            <div class="drawer-checklist" id="ucDrawerList">
+              <div class="chk-item"><i class="fa-solid fa-check"></i> Chọn Patient để xem nghiệp vụ cá nhân</div>
+              <div class="chk-item"><i class="fa-solid fa-check"></i> Chọn Receptionist để xem luồng tiếp đón</div>
+              <div class="chk-item"><i class="fa-solid fa-check"></i> Chọn Dentist để xem chức năng chuyên môn</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: UC SPECIFICATION -->
+    <section class="slide" data-slide="12">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Specification</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Đặc Tả Use Case: Đặt Lịch Hẹn (UC-01)</h2>
+        <div class="spec-table-container glass-panel" data-animate style="--delay: 300ms;">
+          <table class="spec-table">
+            <tr>
+              <th style="width: 22%;">Tên Use Case</th>
+              <td><strong>ĐẶT LỊCH HẸN (SCHEDULE APPOINTMENT)</strong></td>
+            </tr>
+            <tr>
+              <th>Primary Actors</th>
+              <td>Bệnh nhân (Online Portal) / Lễ tân (Tại quầy hoặc qua Hotline)</td>
+            </tr>
+            <tr>
+              <th>Tiền điều kiện (Pre-conditions)</th>
+              <td>
+                1. Thông tin Bệnh nhân đã tồn tại trên CSDL (hoặc được Lễ tân đăng ký mới).<br>
+                2. Danh mục Nha sĩ và ca làm việc (TimeSlots) đã được cấu hình hoạt động.
+              </td>
+            </tr>
+            <tr>
+              <th>Luồng sự kiện chính (Main Flow)</th>
+              <td>
+                1. Người dùng chọn chức năng <strong>Đặt lịch hẹn</strong>.<br>
+                2. Chọn Nha sĩ phụ trách và Ngày mong muốn khám.<br>
+                3. Hệ thống hiển thị các khung giờ (TimeSlot) còn trống.<br>
+                4. Người dùng chọn TimeSlot phù hợp và nhập lý do khám sơ bộ.<br>
+                5. Hệ thống xác thực tính khả dụng và tạo bản ghi <code>Appointment</code> ở trạng thái <em>"Đã xác nhận"</em>.<br>
+                6. Hệ thống xuất thông báo thành công và mã lịch hẹn cho người dùng.
+              </td>
+            </tr>
+            <tr>
+              <th>Luồng rẽ nhánh (Alternative Flow)</th>
+              <td>
+                <strong>4a. Slot giờ đã bị người khác đặt trước:</strong><br>
+                - Hệ thống cảnh báo: <em>"Khung giờ vừa được giữ chỗ, vui lòng chọn lại."</em><br>
+                - Tự động gợi ý 3 khung giờ gần nhất còn trống của nha sĩ đó hoặc gợi ý nha sĩ tương đương.
+              </td>
+            </tr>
+            <tr>
+              <th>Ràng buộc nghiệp vụ (Business Rule)</th>
+              <td>
+                <span class="rule-highlight">Quy tắc độc quyền:</span> Một Nha sĩ chỉ có <strong>tối đa 01 Appointment</strong> ở trạng thái <em>"Đã xác nhận"</em> trong cùng một TimeSlot của một ngày.
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13: INTERACTIVE CLASS DIAGRAM (TAM GIÁC KẾ THỪA RỖNG TRẮNG, HÌNH THOI COMPOSITION ĐẶC) -->
+    <section class="slide" data-slide="13">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Structural Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Class Diagram: Mô Hình Lớp Thực Thể &amp; Quan Hệ</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;">
+          <i class="fa-solid fa-diagram-project"></i> Nhấp vào một <strong>Class</strong> để xem chùm quan hệ liên kết và bản số (Multiplicity). Nhấp vào lớp con của PaymentMethod để xem quan hệ kế thừa <strong>Generalization</strong>.
+        </p>
+
+        <div class="diagram-wrapper glass-panel" data-animate style="--delay: 350ms;">
+          <svg class="uml-svg" id="svgClassDiagram" viewBox="0 0 960 410">
+            <!-- PATIENT -->
+            <g class="uml-class-node" id="cls-patient" data-class="Patient" transform="translate(30, 20)">
+              <rect width="160" height="95" class="uml-class-box"/>
+              <rect width="160" height="24" class="uml-class-head"/>
+              <text x="80" y="16" class="uml-class-name">Patient</text>
+              <text x="10" y="42" class="uml-attr">- patientId: String</text>
+              <text x="10" y="58" class="uml-attr">- fullName: String</text>
+              <text x="10" y="74" class="uml-attr">- phone: String</text>
+              <line x1="0" y1="78" x2="160" y2="78" stroke="var(--border-light)"/>
+              <text x="10" y="90" class="uml-op">+ getHistory(): List</text>
+            </g>
+
+            <!-- APPOINTMENT -->
+            <g class="uml-class-node" id="cls-appointment" data-class="Appointment" transform="translate(260, 20)">
+              <rect width="170" height="95" class="uml-class-box"/>
+              <rect width="170" height="24" class="uml-class-head"/>
+              <text x="85" y="16" class="uml-class-name">Appointment</text>
+              <text x="10" y="42" class="uml-attr">- appointmentId: String</text>
+              <text x="10" y="58" class="uml-attr">- appDate: Date</text>
+              <text x="10" y="74" class="uml-attr">- status: String</text>
+              <line x1="0" y1="78" x2="170" y2="78" stroke="var(--border-light)"/>
+              <text x="10" y="90" class="uml-op">+ cancel(): Boolean</text>
+            </g>
+
+            <!-- DENTIST -->
+            <g class="uml-class-node" id="cls-dentist" data-class="Dentist" transform="translate(500, 20)">
+              <rect width="160" height="95" class="uml-class-box"/>
+              <rect width="160" height="24" class="uml-class-head"/>
+              <text x="80" y="16" class="uml-class-name">Dentist</text>
+              <text x="10" y="42" class="uml-attr">- dentistId: String</text>
+              <text x="10" y="58" class="uml-attr">- fullName: String</text>
+              <text x="10" y="74" class="uml-attr">- specialization: String</text>
+              <line x1="0" y1="78" x2="160" y2="78" stroke="var(--border-light)"/>
+              <text x="10" y="90" class="uml-op">+ checkSlot(): Boolean</text>
+            </g>
+
+            <!-- MEDICAL RECORD -->
+            <g class="uml-class-node" id="cls-record" data-class="MedicalRecord" transform="translate(260, 155)">
+              <rect width="170" height="85" class="uml-class-box"/>
+              <rect width="170" height="24" class="uml-class-head"/>
+              <text x="85" y="16" class="uml-class-name">MedicalRecord</text>
+              <text x="10" y="42" class="uml-attr">- recordId: String</text>
+              <text x="10" y="58" class="uml-attr">- diagnosis: String</text>
+              <line x1="0" y1="64" x2="170" y2="64" stroke="var(--border-light)"/>
+              <text x="10" y="77" class="uml-op">+ addTreatment(): void</text>
+            </g>
+
+            <!-- INVOICE -->
+            <g class="uml-class-node" id="cls-invoice" data-class="Invoice" transform="translate(260, 280)">
+              <rect width="170" height="95" class="uml-class-box"/>
+              <rect width="170" height="24" class="uml-class-head"/>
+              <text x="85" y="16" class="uml-class-name">Invoice</text>
+              <text x="10" y="42" class="uml-attr">- invoiceId: String</text>
+              <text x="10" y="58" class="uml-attr">- totalAmount: Decimal</text>
+              <text x="10" y="74" class="uml-attr">- paymentStatus: String</text>
+              <line x1="0" y1="78" x2="170" y2="78" stroke="var(--border-light)"/>
+              <text x="10" y="90" class="uml-op">+ calculateTotal(): void</text>
+            </g>
+
+            <!-- INVOICE DETAIL (Composition) -->
+            <g class="uml-class-node" id="cls-detail" data-class="InvoiceDetail" transform="translate(500, 280)">
+              <rect width="160" height="85" class="uml-class-box"/>
+              <rect width="160" height="24" class="uml-class-head"/>
+              <text x="80" y="16" class="uml-class-name">InvoiceDetail</text>
+              <text x="10" y="42" class="uml-attr">- quantity: Int</text>
+              <text x="10" y="58" class="uml-attr">- unitPrice: Decimal</text>
+              <line x1="0" y1="64" x2="160" y2="64" stroke="var(--border-light)"/>
+              <text x="10" y="77" class="uml-op">+ getLineTotal(): Decimal</text>
+            </g>
+
+            <!-- DENTAL SERVICE -->
+            <g class="uml-class-node" id="cls-service" data-class="DentalService" transform="translate(740, 280)">
+              <rect width="160" height="85" class="uml-class-box"/>
+              <rect width="160" height="24" class="uml-class-head"/>
+              <text x="80" y="16" class="uml-class-name">DentalService</text>
+              <text x="10" y="42" class="uml-attr">- serviceId: String</text>
+              <text x="10" y="58" class="uml-attr">- serviceName: String</text>
+              <line x1="0" y1="64" x2="160" y2="64" stroke="var(--border-light)"/>
+              <text x="10" y="77" class="uml-op">+ getPrice(): Decimal</text>
+            </g>
+
+            <!-- PAYMENT METHOD (Abstract) -->
+            <g class="uml-class-node" id="cls-payment" data-class="PaymentMethod" transform="translate(30, 240)">
+              <rect width="160" height="50" class="uml-class-box"/>
+              <rect width="160" height="20" class="uml-class-head"/>
+              <text x="80" y="14" class="uml-class-name">&lt;&lt;abstract&gt;&gt; PaymentMethod</text>
+              <text x="10" y="38" class="uml-op">+ pay(amount): bool</text>
+            </g>
+
+            <g class="uml-class-node" id="cls-cash" data-class="CashPayment" transform="translate(10, 340)">
+              <rect width="90" height="38" class="uml-class-box"/>
+              <text x="45" y="24" class="uml-class-name">CashPayment</text>
+            </g>
+            <g class="uml-class-node" id="cls-transfer" data-class="TransferPayment" transform="translate(115, 340)">
+              <rect width="95" height="38" class="uml-class-box"/>
+              <text x="47" y="24" class="uml-class-name">TransferPayment</text>
+            </g>
+
+            <!-- GENERALIZATION: TAM GIÁC RỖNG TRẮNG CHUẨN UML TRỎ LÊN LỚP CHA -->
+            <g id="gen-payment-group" class="uml-rel-group">
+              <polygon points="110,290 102,306 118,306" fill="#FFFFFF" stroke="#475569" stroke-width="1.8"/>
+              <line x1="110" y1="306" x2="110" y2="322" stroke="#475569" stroke-width="1.8"/>
+              <line x1="55" y1="322" x2="162" y2="322" stroke="#475569" stroke-width="1.8"/>
+              <line x1="55" y1="322" x2="55" y2="340" stroke="#475569" stroke-width="1.8"/>
+              <line x1="162" y1="322" x2="162" y2="340" stroke="#475569" stroke-width="1.8"/>
+            </g>
+
+            <!-- ASSOCIATIONS & MULTIPLICITY -->
+            <!-- Patient - Appointment -->
+            <g class="uml-rel-group" data-rel="Patient,Appointment">
+              <line x1="190" y1="60" x2="260" y2="60" stroke="#475569" stroke-width="1.8"/>
+              <text x="195" y="55" class="uml-mult">1</text>
+              <text x="240" y="55" class="uml-mult">0..*</text>
+            </g>
+
+            <!-- Dentist - Appointment -->
+            <g class="uml-rel-group" data-rel="Dentist,Appointment">
+              <line x1="500" y1="60" x2="430" y2="60" stroke="#475569" stroke-width="1.8"/>
+              <text x="485" y="55" class="uml-mult">1</text>
+              <text x="440" y="55" class="uml-mult">0..*</text>
+            </g>
+
+            <!-- Appointment - MedicalRecord -->
+            <g class="uml-rel-group" data-rel="Appointment,MedicalRecord">
+              <line x1="345" y1="115" x2="345" y2="155" stroke="#475569" stroke-width="1.8"/>
+              <text x="355" y="128" class="uml-mult">1</text>
+              <text x="355" y="148" class="uml-mult">1</text>
+            </g>
+
+            <!-- MedicalRecord - Invoice -->
+            <g class="uml-rel-group" data-rel="MedicalRecord,Invoice">
+              <line x1="345" y1="240" x2="345" y2="280" stroke="#475569" stroke-width="1.8"/>
+              <text x="355" y="254" class="uml-mult">1</text>
+              <text x="355" y="272" class="uml-mult">1</text>
+            </g>
+
+            <!-- COMPOSITION: HÌNH THOI ĐẶC ◆ Ở PHÍA INVOICE -->
+            <g class="uml-rel-group" data-rel="Invoice,InvoiceDetail">
+              <polygon points="430,325 438,320 446,325 438,330" fill="#0F172A" stroke="#0F172A"/>
+              <line x1="446" y1="325" x2="500" y2="325" stroke="#475569" stroke-width="1.8"/>
+              <text x="455" y="318" class="uml-mult">1</text>
+              <text x="485" y="318" class="uml-mult">1..*</text>
+            </g>
+
+            <!-- InvoiceDetail - DentalService -->
+            <g class="uml-rel-group" data-rel="InvoiceDetail,DentalService">
+              <line x1="660" y1="325" x2="740" y2="325" stroke="#475569" stroke-width="1.8"/>
+              <text x="670" y="318" class="uml-mult">*</text>
+              <text x="725" y="318" class="uml-mult">1</text>
+            </g>
+
+            <!-- Invoice - PaymentMethod -->
+            <g class="uml-rel-group" data-rel="Invoice,PaymentMethod">
+              <line x1="260" y1="310" x2="190" y2="275" stroke="#475569" stroke-width="1.8"/>
+              <text x="245" y="302" class="uml-mult">1</text>
+              <text x="200" y="270" class="uml-mult">1</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14: INTERACTIVE SEQUENCE - BOOKING (SYNC ĐẶC, RETURN NÉT ĐỨT MỞ) -->
+    <section class="slide" data-slide="14">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Dynamic Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Sequence Diagram: Đặt Lịch &amp; Kiểm Soát Khung Giờ</h2>
+        
+        <div class="diagram-toolbar">
+          <button id="btnPlaySeq14" class="action-btn small"><i class="fa-solid fa-play"></i> Chạy tuần tự message</button>
+          <div class="btn-group-toggle">
+            <button class="toggle-btn active" data-branch="yes">Khung giờ TRỐNG (Success)</button>
+            <button class="toggle-btn" data-branch="no">Khung giờ ĐÃ ĐẦY (Alternative)</button>
+          </div>
+          <span class="info-tag-sm" id="seq14Status">Trạng thái: Sẵn sàng</span>
+        </div>
+
+        <div class="diagram-wrapper glass-panel" data-animate style="--delay: 300ms;">
+          <svg class="uml-svg" id="svgSeqBooking" viewBox="0 0 960 380">
+            <!-- LOCAL DEFS CHO SLIDE 14 -->
+            <defs>
+              <marker id="s14-sync" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+              </marker>
+              <marker id="s14-return" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+              </marker>
+              <marker id="s14-return-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+              </marker>
+            </defs>
+
+            <!-- Lifelines -->
+            <g transform="translate(30, 20)">
+              <rect width="110" height="28" rx="6" class="seq-life-box"/>
+              <text x="55" y="19" class="seq-life-text">:BenhNhan</text>
+              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(210, 20)">
+              <rect width="110" height="28" rx="6" class="seq-life-box"/>
+              <text x="55" y="19" class="seq-life-text">:DatLichUI</text>
+              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(400, 20)">
+              <rect width="150" height="28" rx="6" class="seq-life-box"/>
+              <text x="75" y="19" class="seq-life-text">:AppointmentService</text>
+              <line x1="75" y1="28" x2="75" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(620, 20)">
+              <rect width="130" height="28" rx="6" class="seq-life-box"/>
+              <text x="65" y="19" class="seq-life-text">:DentistService</text>
+              <line x1="65" y1="28" x2="65" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(820, 20)">
+              <rect width="90" height="28" rx="6" class="seq-life-box"/>
+              <text x="45" y="19" class="seq-life-text">:CSDL</text>
+              <line x1="45" y1="28" x2="45" y2="350" class="seq-lifeline"/>
+            </g>
+
+            <!-- ACTIVATION BARS -->
+            <rect x="79" y="65" width="12" height="270" rx="2" class="seq-act-bar"/>
+            <rect x="259" y="70" width="12" height="260" rx="2" class="seq-act-bar"/>
+            <rect x="469" y="90" width="12" height="230" rx="2" class="seq-act-bar"/>
+            <rect x="679" y="115" width="12" height="75" rx="2" class="seq-act-bar"/>
+            <rect x="859" y="135" width="12" height="35" rx="2" class="seq-act-bar"/>
+            <rect x="859" y="235" width="12" height="30" rx="2" class="seq-act-bar" id="seqActSaveAppt"/>
+
+            <!-- Messages Sync (Mũi tên đặc #0284C7) -->
+            <g class="seq-msg-group" data-step="1">
+              <line x1="91" y1="70" x2="259" y2="70" stroke="#0284C7" stroke-width="2" marker-end="url(#s14-sync)"/>
+              <text x="175" y="64" class="seq-msg">1: requestAppointment()</text>
+            </g>
+
+            <g class="seq-msg-group" data-step="2">
+              <line x1="271" y1="95" x2="469" y2="95" stroke="#0284C7" stroke-width="2" marker-end="url(#s14-sync)"/>
+              <text x="365" y="89" class="seq-msg">2: checkAvailability(date, dentistId)</text>
+            </g>
+
+            <g class="seq-msg-group" data-step="3">
+              <line x1="481" y1="120" x2="679" y2="120" stroke="#0284C7" stroke-width="2" marker-end="url(#s14-sync)"/>
+              <text x="575" y="114" class="seq-msg">3: getAvailableSlots()</text>
+            </g>
+
+            <g class="seq-msg-group" data-step="4">
+              <line x1="691" y1="140" x2="859" y2="140" stroke="#0284C7" stroke-width="2" marker-end="url(#s14-sync)"/>
+              <text x="770" y="134" class="seq-msg">4: queryAppointments()</text>
+            </g>
+
+            <!-- Returns (Mũi tên nét đứt mở) -->
+            <g class="seq-msg-group" data-step="5">
+              <line x1="859" y1="165" x2="691" y2="165" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s14-return)"/>
+              <text x="770" y="159" class="seq-msg">5: availableSlots</text>
+            </g>
+
+            <g class="seq-msg-group" data-step="6">
+              <line x1="679" y1="190" x2="481" y2="190" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s14-return)"/>
+              <text x="575" y="184" class="seq-msg">6: returnSlots</text>
+            </g>
+
+            <!-- ALT FRAME -->
+            <rect x="60" y="210" width="830" height="135" rx="6" fill="var(--bg-main)" fill-opacity="0.4" stroke="#F59E0B" stroke-width="1.5"/>
+            <rect x="60" y="210" width="38" height="18" fill="#F59E0B"/>
+            <text x="79" y="223" fill="#FFF" font-weight="700" font-size="10" text-anchor="middle">alt</text>
+            <text x="110" y="224" class="svg-guard">[Còn slot trống]</text>
+
+            <g id="seq14BranchYes">
+              <line x1="481" y1="245" x2="859" y2="245" stroke="#0284C7" stroke-width="2" marker-end="url(#s14-sync)"/>
+              <text x="660" y="239" class="seq-msg">7: createAppointment(CONFIRMED)</text>
+
+              <line x1="469" y1="270" x2="271" y2="270" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s14-return)"/>
+              <text x="370" y="264" class="seq-msg">8: bookingConfirmation(apptId)</text>
+            </g>
+
+            <line x1="60" y1="285" x2="890" y2="285" stroke="#F59E0B" stroke-dasharray="4,4"/>
+            <text x="110" y="303" class="svg-guard danger">[Hết slot]</text>
+
+            <g id="seq14BranchNo" style="opacity: 0.35;">
+              <line x1="469" y1="325" x2="271" y2="325" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s14-return-red)"/>
+              <text x="370" y="319" class="seq-msg danger">8b: suggestAlternativeSlots()</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15: INTERACTIVE SEQUENCE - EXAM & INVOICE (SELF-CALL & LOOP) -->
+    <section class="slide" data-slide="15">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Dynamic Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Sequence: Khám Bệnh, Vòng Lặp Phí &amp; In Hóa Đơn</h2>
+        
+        <div class="diagram-toolbar">
+          <button id="btnStepInvoiceLoop" class="action-btn small"><i class="fa-solid fa-arrows-rotate"></i> Duyệt dịch vụ (Loop): <span id="loopCounterTxt">Dịch vụ 1/3</span></button>
+          <button id="btnToggleOptPrint" class="action-btn small secondary"><i class="fa-solid fa-print"></i> Nhánh [opt]: In bill giấy</button>
+        </div>
+
+        <div class="diagram-wrapper glass-panel" data-animate style="--delay: 300ms;">
+          <svg class="uml-svg" viewBox="0 0 960 380">
+            <!-- LOCAL DEFS CHO SLIDE 15 -->
+            <defs>
+              <marker id="s15-sync" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+              </marker>
+              <marker id="s15-return-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+              </marker>
+            </defs>
+
+            <!-- Lifelines -->
+            <g transform="translate(40, 20)">
+              <rect width="100" height="28" rx="6" class="seq-life-box"/>
+              <text x="50" y="19" class="seq-life-text">:NhaSi</text>
+              <line x1="50" y1="28" x2="50" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(210, 20)">
+              <rect width="110" height="28" rx="6" class="seq-life-box"/>
+              <text x="55" y="19" class="seq-life-text">:KhamBenhUI</text>
+              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(400, 20)">
+              <rect width="130" height="28" rx="6" class="seq-life-box"/>
+              <text x="65" y="19" class="seq-life-text">:RecordService</text>
+              <line x1="65" y1="28" x2="65" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(620, 20)">
+              <rect width="130" height="28" rx="6" class="seq-life-box"/>
+              <text x="65" y="19" class="seq-life-text">:InvoiceService</text>
+              <line x1="65" y1="28" x2="65" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(820, 20)">
+              <rect width="80" height="28" rx="6" class="seq-life-box"/>
+              <text x="40" y="19" class="seq-life-text">:CSDL</text>
+              <line x1="40" y1="28" x2="40" y2="350" class="seq-lifeline"/>
+            </g>
+
+            <!-- ACTIVATION BARS -->
+            <rect x="84" y="65" width="12" height="80" rx="2" class="seq-act-bar"/>
+            <rect x="259" y="70" width="12" height="270" rx="2" class="seq-act-bar"/>
+            <rect x="459" y="90" width="12" height="35" rx="2" class="seq-act-bar"/>
+            <rect x="679" y="140" width="12" height="195" rx="2" class="seq-act-bar"/>
+            <rect x="854" y="115" width="12" height="120" rx="2" class="seq-act-bar"/>
+
+            <line x1="96" y1="70" x2="259" y2="70" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="175" y="64" class="seq-msg">1: submitMedicalRecord(data)</text>
+
+            <line x1="271" y1="95" x2="459" y2="95" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="360" y="89" class="seq-msg">2: createMedicalRecord()</text>
+
+            <line x1="471" y1="120" x2="854" y2="120" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="660" y="114" class="seq-msg">3: saveMedicalRecord()</text>
+
+            <line x1="271" y1="145" x2="679" y2="145" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="475" y="139" class="seq-msg">4: createInvoice(recordId)</text>
+
+            <!-- LOOP FRAME -->
+            <rect x="420" y="165" width="460" height="80" rx="6" fill="var(--bg-main)" fill-opacity="0.3" stroke="#0284C7" stroke-width="1.5"/>
+            <rect x="420" y="165" width="45" height="18" fill="#0284C7"/>
+            <text x="442" y="178" fill="#FFF" font-weight="700" font-size="10" text-anchor="middle">loop</text>
+            <text x="475" y="179" class="svg-guard" id="seqLoopText">[cho mỗi dịch vụ đã thực hiện]</text>
+
+            <line x1="691" y1="195" x2="854" y2="195" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="770" y="189" class="seq-msg" id="seqLoopDetailMsg">5: addInvoiceDetail(Dịch vụ #1)</text>
+
+            <line x1="691" y1="220" x2="854" y2="220" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="770" y="214" class="seq-msg">6: saveDetail()</text>
+
+            <!-- SELF MESSAGE TÍNH TỔNG (fill=none) -->
+            <path d="M 691 255 L 730 255 L 730 280 L 696 280" fill="none" stroke="#0284C7" stroke-width="2" marker-end="url(#s15-sync)"/>
+            <text x="740" y="270" class="seq-msg">7: calculateTotal() [Σ lineTotal]</text>
+
+            <!-- OPT FRAME -->
+            <g id="seqOptPrintFrame" style="transition: opacity 0.3s ease;">
+              <rect x="180" y="300" width="530" height="50" rx="6" fill="#FEF3C7" fill-opacity="0.3" stroke="#D97706" stroke-width="1.5"/>
+              <rect x="180" y="300" width="38" height="18" fill="#D97706"/>
+              <text x="199" y="313" fill="#FFF" font-weight="700" font-size="10" text-anchor="middle">opt</text>
+              <text x="230" y="314" class="svg-guard">[Bệnh nhân yêu cầu in hóa đơn]</text>
+
+              <line x1="679" y1="330" x2="271" y2="330" stroke="#D97706" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s15-return-amber)"/>
+              <text x="475" y="324" class="seq-msg">8: printInvoicePDF()</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 16: INTERACTIVE SEQUENCE - CANCEL (ASYNC SMS NÉT HỞ XANH LÁ) -->
+    <section class="slide" data-slide="16">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">UML Dynamic Modeling</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Sequence Diagram: Nghiệp Vụ Hủy Lịch Hẹn</h2>
+        
+        <div class="diagram-toolbar">
+          <div class="btn-group-toggle">
+            <button class="toggle-btn active" data-status="pending">Trạng thái: CHỜ / ĐÃ XÁC NHẬN (Được hủy)</button>
+            <button class="toggle-btn" data-status="completed">Trạng thái: ĐÃ KHÁM (Không được phép)</button>
+          </div>
+          <span class="info-tag-sm" id="seq16Status">Tin nhắn SMS: Sẵn sàng</span>
+        </div>
+
+        <div class="diagram-wrapper glass-panel" data-animate style="--delay: 300ms;">
+          <svg class="uml-svg" id="svgSeqCancel" viewBox="0 0 960 380">
+            <!-- LOCAL DEFS CHO SLIDE 16 -->
+            <defs>
+              <marker id="s16-sync" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284C7"/>
+              </marker>
+              <!-- ASYNC MESSAGE: MŨI TÊN HỞ MÀU XANH LÁ CHUẨN UML -->
+              <marker id="s16-async" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+              </marker>
+              <marker id="s16-return" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+              </marker>
+              <marker id="s16-return-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+              </marker>
+            </defs>
+
+            <!-- Lifelines -->
+            <g transform="translate(40, 20)">
+              <rect width="110" height="28" rx="6" class="seq-life-box"/>
+              <text x="55" y="19" class="seq-life-text">:BenhNhan</text>
+              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(220, 20)">
+              <rect width="110" height="28" rx="6" class="seq-life-box"/>
+              <text x="55" y="19" class="seq-life-text">:HuyLichUI</text>
+              <line x1="55" y1="28" x2="55" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(420, 20)">
+              <rect width="150" height="28" rx="6" class="seq-life-box"/>
+              <text x="75" y="19" class="seq-life-text">:AppointmentService</text>
+              <line x1="75" y1="28" x2="75" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(680, 20)">
+              <rect width="80" height="28" rx="6" class="seq-life-box"/>
+              <text x="40" y="19" class="seq-life-text">:CSDL</text>
+              <line x1="40" y1="28" x2="40" y2="350" class="seq-lifeline"/>
+            </g>
+            <g transform="translate(830, 20)">
+              <rect width="90" height="28" rx="6" class="seq-life-box"/>
+              <text x="45" y="19" class="seq-life-text">:NhaSi</text>
+              <line x1="45" y1="28" x2="45" y2="350" class="seq-lifeline"/>
+            </g>
+
+            <!-- ACTIVATION BARS -->
+            <rect x="89" y="65" width="12" height="260" rx="2" class="seq-act-bar"/>
+            <rect x="269" y="70" width="12" height="250" rx="2" class="seq-act-bar"/>
+            <rect x="489" y="95" width="12" height="220" rx="2" class="seq-act-bar"/>
+            <rect x="714" y="115" width="12" height="85" rx="2" class="seq-act-bar"/>
+            <rect x="869" y="210" width="12" height="40" rx="2" class="seq-act-bar"/>
+
+            <line x1="101" y1="70" x2="269" y2="70" stroke="#0284C7" stroke-width="2" marker-end="url(#s16-sync)"/>
+            <text x="185" y="64" class="seq-msg">1: cancelAppointment(apptId)</text>
+
+            <line x1="281" y1="95" x2="489" y2="95" stroke="#0284C7" stroke-width="2" marker-end="url(#s16-sync)"/>
+            <text x="385" y="89" class="seq-msg">2: validateCancellation()</text>
+
+            <line x1="501" y1="120" x2="714" y2="120" stroke="#0284C7" stroke-width="2" marker-end="url(#s16-sync)"/>
+            <text x="605" y="114" class="seq-msg">3: getAppointmentStatus()</text>
+
+            <!-- ALT FRAME -->
+            <rect x="60" y="145" width="840" height="195" rx="6" fill="var(--bg-main)" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.5"/>
+            <rect x="60" y="145" width="38" height="18" fill="#F59E0B"/>
+            <text x="79" y="158" fill="#FFF" font-weight="700" font-size="10" text-anchor="middle">alt</text>
+            <text x="110" y="159" class="svg-guard">[status == 'Chờ xác nhận' || 'Đã xác nhận']</text>
+
+            <g id="seq16AllowGroup">
+              <line x1="501" y1="180" x2="714" y2="180" stroke="#0284C7" stroke-width="2" marker-end="url(#s16-sync)"/>
+              <text x="605" y="174" class="seq-msg">4: updateStatus(CANCELLED)</text>
+
+              <!-- Mũi tên bất đồng bộ ASYNC cho SMS (Màu xanh lá) -->
+              <line x1="501" y1="215" x2="869" y2="215" stroke="#10B981" stroke-width="2" marker-end="url(#s16-async)"/>
+              <text x="685" y="209" class="seq-msg success">&lt;&lt;async&gt;&gt; sendCancellationSMS()</text>
+
+              <line x1="489" y1="245" x2="281" y2="245" stroke="#0284C7" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s16-return)"/>
+              <text x="385" y="239" class="seq-msg">5: returnCancelSuccess()</text>
+            </g>
+
+            <line x1="60" y1="265" x2="900" y2="265" stroke="#F59E0B" stroke-dasharray="4,4"/>
+            <text x="110" y="285" class="svg-guard danger">[status == 'Đã khám' (COMPLETED)]</text>
+
+            <g id="seq16DenyGroup" style="opacity: 0.35;">
+              <line x1="489" y1="315" x2="281" y2="315" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#s16-return-red)"/>
+              <text x="385" y="309" class="seq-msg danger">returnError("Không được phép hủy lịch hẹn đã khám")</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE 17: BUSINESS RULES & VALIDATION -->
+    <section class="slide" data-slide="17">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Toàn vẹn hệ thống</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Ràng Buộc Nghiệp Vụ &amp; Bộ Quy Tắc Xác Thực (Validation)</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;"><i class="fa-solid fa-list-check"></i> Nhấp chuột vào từng dòng quy tắc để mở rộng diễn giải cơ chế bảo vệ cơ sở dữ liệu.</p>
+
+        <div class="rules-grid">
+          <div class="rule-card glass-panel" data-animate style="--delay: 300ms;">
+            <div class="rule-card-header"><i class="fa-solid fa-filter-circle-check text-primary"></i> Xác Thực Dữ Liệu Đầu Vào (Field Validation)</div>
+            <div class="accordion-rules">
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-phone"></i> Số điện thoại Việt Nam hợp lệ <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Quy chuẩn 10 chữ số, bắt đầu bằng chữ số 0. Regex kiểm tra: <code>^0[0-9]{9}$</code>. Ngăn chặn số rác gây lỗi cổng SMS.</div>
+              </div>
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-cake-candles"></i> Ngày sinh bệnh nhân (DOB) <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Ràng buộc logic: <code>DateOfBirth &le; CurrentDate</code>. Hệ thống từ chối lưu ngày sinh ở tương lai.</div>
+              </div>
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-calendar-day"></i> Ngày đặt lịch hẹn khám <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Ràng buộc thời gian: <code>AppointmentDate &ge; CurrentDate</code>. Không cho phép tạo lịch hẹn ngược về quá khứ.</div>
+              </div>
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-tag"></i> Đơn giá &amp; Số lượng dịch vụ <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body"><code>ServicePrice &gt; 0</code> và <code>InvoiceQuantity &ge; 1</code>. Tuyệt đối không chấp nhận giá âm hoặc dịch vụ bằng 0.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rule-card glass-panel" data-animate style="--delay: 450ms;">
+            <div class="rule-card-header"><i class="fa-solid fa-shield-halved text-success"></i> Ràng Buộc Nghiệp Vụ Cốt Lõi (Business Invariants)</div>
+            <div class="accordion-rules">
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-user-lock"></i> Chống Trùng Lịch Bác Sĩ Tuyệt Đối <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Trong cùng một ngày và cùng 1 khung giờ timeSlot, một Nha sĩ chỉ có <strong>tối đa 01 Appointment</strong> ở trạng thái "Đã xác nhận".</div>
+              </div>
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-link"></i> Ràng Buộc Phụ Thuộc Hóa Đơn <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Hóa đơn (Invoice) <strong>chỉ được phép tạo</strong> sau khi MedicalRecord của ca khám đó đã được ghi nhận thành công.</div>
+              </div>
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-calculator"></i> Tính Toán Tiền Tự Động <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Tổng số tiền hóa đơn bắt buộc phải tính theo công thức: <code>totalAmount = &Sigma; (quantity * unitPrice)</code>.</div>
+              </div>
+              <div class="rule-acc-item">
+                <div class="acc-head"><i class="fa-solid fa-box-archive"></i> Toàn Vẹn Bệnh Án Lịch Sử <i class="fa-solid fa-chevron-down acc-arrow"></i></div>
+                <div class="acc-body">Thao tác xóa mềm (Soft delete) thông tin Patient tuyệt đối <strong>không được xóa</strong> các chứng từ MedicalRecord và Invoice trong lịch sử.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 18: ROLE-BASED ACCESS CONTROL (RBAC) -->
+    <section class="slide" data-slide="18">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">An toàn thông tin</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Ma Trận Phân Quyền Theo Vai Trò (RBAC Matrix)</h2>
+        <p class="slide-instruction" data-animate style="--delay: 250ms;"><i class="fa-solid fa-shield"></i> Chọn vai trò để làm nổi bật cột đặc quyền trên hệ thống DentCare.</p>
+
+        <!-- Role Filter Tabs -->
+        <div class="rbac-role-tabs" data-animate style="--delay: 300ms;">
+          <button class="rbac-tab active" data-role="all">Tất cả vai trò</button>
+          <button class="rbac-tab" data-role="patient"><i class="fa-solid fa-user"></i> Bệnh Nhân</button>
+          <button class="rbac-tab" data-role="receptionist"><i class="fa-solid fa-headset"></i> Lễ Tân</button>
+          <button class="rbac-tab" data-role="dentist"><i class="fa-solid fa-user-doctor"></i> Nha Sĩ</button>
+          <button class="rbac-tab" data-role="manager"><i class="fa-solid fa-user-tie"></i> Quản Lý</button>
+        </div>
+
+        <div class="table-container glass-panel" data-animate style="--delay: 350ms;">
+          <table class="rbac-table" id="rbacTable">
+            <thead>
+              <tr>
+                <th>Phân Hệ Nghiệp Vụ</th>
+                <th class="col-role col-patient"><i class="fa-solid fa-user"></i> Bệnh Nhân</th>
+                <th class="col-role col-receptionist"><i class="fa-solid fa-headset"></i> Lễ Tân</th>
+                <th class="col-role col-dentist"><i class="fa-solid fa-user-doctor"></i> Nha Sĩ</th>
+                <th class="col-role col-manager"><i class="fa-solid fa-user-tie"></i> Quản Lý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Xem Lịch Làm Việc / Lịch Hẹn</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag check">✓ Xem của mình</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag full">✓ Toàn quyền</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag check">✓ Xem ca trực</span></td>
+                <td class="col-role col-manager"><span class="badge-tag full">✓ Toàn quyền</span></td>
+              </tr>
+              <tr>
+                <td><strong>Đăng Ký &amp; Đặt Lịch Hẹn</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag check">✓ Đặt cá nhân</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag full">✓ Đặt cho khách</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-manager"><span class="badge-tag full">✓ Toàn quyền</span></td>
+              </tr>
+              <tr>
+                <td><strong>Hồ Sơ Định Danh Bệnh Nhân</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag check">Xem của mình</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag full">✓ Thêm / Sửa</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag read">Chỉ xem</span></td>
+                <td class="col-role col-manager"><span class="badge-tag full">✓ Toàn quyền</span></td>
+              </tr>
+              <tr>
+                <td><strong>Khám Bệnh &amp; Chẩn Đoán</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag full">✓ Chuyên trách</span></td>
+                <td class="col-role col-manager"><span class="badge-tag read">Chỉ xem</span></td>
+              </tr>
+              <tr>
+                <td><strong>Ghi Bệnh Án (Medical Record)</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag read">Xem của mình</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag read">Chỉ xem</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag full">✓ Lập / Cập nhật</span></td>
+                <td class="col-role col-manager"><span class="badge-tag read">Chỉ xem</span></td>
+              </tr>
+              <tr>
+                <td><strong>Tạo Hóa Đơn &amp; Nhận Thanh Toán</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag read">Xem bill của mình</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag full">✓ Lập &amp; Thu tiền</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-manager"><span class="badge-tag read">Chỉ xem</span></td>
+              </tr>
+              <tr>
+                <td><strong>Cấu Hình Giá Dịch Vụ Nha Khoa</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-manager"><span class="badge-tag full">✓ Toàn quyền</span></td>
+              </tr>
+              <tr>
+                <td><strong>Xem Báo Cáo Doanh Thu Tổng Hợp</strong></td>
+                <td class="col-role col-patient"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-receptionist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-dentist"><span class="badge-tag cross">-</span></td>
+                <td class="col-role col-manager"><span class="badge-tag full">✓ Toàn quyền</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 19: DASHBOARD & TRA CỨU MOCKUP -->
+    <section class="slide" data-slide="19">
+      <div class="slide-content">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Đầu ra hệ thống</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">Báo Cáo Doanh Thu Thời Gian Thực &amp; Tra Cứu Bệnh Nhân</h2>
+        
+        <div class="mockup-grid">
+          <!-- Live Analytics Mockup -->
+          <div class="mock-card glass-panel" data-animate style="--delay: 300ms;">
+            <div class="mock-header">
+              <div><i class="fa-solid fa-chart-line text-primary"></i> <strong>Thống Kê Doanh Thu &amp; Dịch Vụ</strong></div>
+              <span class="badge-live"><i class="fa-solid fa-circle-dot pulse"></i> Live Sync</span>
+            </div>
+            
+            <div class="kpi-row">
+              <div class="kpi-box">
+                <span class="kpi-label">Tổng Ca Điều Trị (Tháng)</span>
+                <span class="kpi-val counter-num" data-target="342">0</span>
+              </div>
+              <div class="kpi-box">
+                <span class="kpi-label">Doanh Thu Thuần</span>
+                <span class="kpi-val text-success counter-num" data-target="285400000" data-format="currency">0</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Bar Chart SVG -->
+            <div class="chart-bars-wrap">
+              <div class="chart-bar-col">
+                <div class="bar-fill" style="--height: 48%;" data-tip="Tuần 1: 48.000.000 đ"></div>
+                <span class="bar-label">T1</span>
+              </div>
+              <div class="chart-bar-col">
+                <div class="bar-fill" style="--height: 72%;" data-tip="Tuần 2: 72.500.000 đ"></div>
+                <span class="bar-label">T2</span>
+              </div>
+              <div class="chart-bar-col">
+                <div class="bar-fill" style="--height: 65%;" data-tip="Tuần 3: 65.000.000 đ"></div>
+                <span class="bar-label">T3</span>
+              </div>
+              <div class="chart-bar-col">
+                <div class="bar-fill" style="--height: 95%;" data-tip="Tuần 4: 99.900.000 đ"></div>
+                <span class="bar-label">T4</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Search Mockup -->
+          <div class="mock-card glass-panel" data-animate style="--delay: 450ms;">
+            <div class="mock-header">
+              <div><i class="fa-solid fa-magnifying-glass text-primary"></i> <strong>Tra Cứu Lịch Sử Bệnh Nhân Tức Thời</strong></div>
+            </div>
+            <div class="mock-search-bar">
+              <i class="fa-solid fa-search"></i>
+              <input type="text" id="patientSearchInput" placeholder="Nhập SĐT hoặc Mã BN (thử gõ 'An' hoặc '0912')...">
+            </div>
+            <div class="mock-patient-result" id="patientSearchResult">
+              <div class="patient-line"><strong>Mã BN:</strong> <span class="text-primary">BN-1049</span> • <strong>Họ tên:</strong> Nguyễn Văn An • <strong>SĐT:</strong> 0912.345.678</div>
+              <div class="history-item">
+                <div class="hist-head">
+                  <span class="hist-date"><i class="fa-regular fa-calendar"></i> 14/09/2026 - 09:00</span>
+                  <span class="hist-dentist"><i class="fa-solid fa-user-doctor"></i> BS. Trần Nha</span>
+                </div>
+                <div class="hist-diag"><strong>Chẩn đoán:</strong> Sâu răng hàm R46 độ 2</div>
+                <div class="hist-inv"><i class="fa-solid fa-receipt"></i> Hóa đơn #INV-8821: <strong>850.000 đ</strong> (Đã hoàn tất thanh toán)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 20: SUMMARY & CONCLUSION -->
+    <section class="slide" data-slide="20">
+      <div class="slide-content summary-layout">
+        <div class="section-tag" data-animate style="--delay: 100ms;">Tổng kết đề tài</div>
+        <h2 class="slide-title" data-animate style="--delay: 200ms;">DentCare – Kiến Trúc Chuyển Đổi Số Toàn Diện</h2>
+        
+        <div class="summary-flow" data-animate style="--delay: 350ms;">
+          <div class="sum-box interactive-card">
+            <div class="sum-icon"><i class="fa-solid fa-arrow-right-to-bracket"></i></div>
+            <h3>INPUT</h3>
+            <p>Bệnh nhân đăng ký<br>Khung giờ khám còn trống<br>Tiểu sử lâm sàng</p>
+          </div>
+          <div class="sum-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="sum-box highlight interactive-card">
+            <div class="sum-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3>PROCESSING</h3>
+            <p>Khóa slot chống trùng lịch<br>Chẩn đoán &amp; MedicalRecord<br>Tính viện phí tự động</p>
+          </div>
+          <div class="sum-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="sum-box interactive-card">
+            <div class="sum-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <h3>OUTPUT</h3>
+            <p>Hồ sơ y bạ số hóa<br>Hóa đơn &amp; Báo cáo doanh thu<br>Tra cứu tức thời</p>
+          </div>
+        </div>
+
+        <div class="closing-box" data-animate style="--delay: 500ms;">
+          <h2>XIN TRÂN TRỌNG CẢM ƠN QUÝ THẦY VÀ CÁC BẠN ĐÃ LẮNG NGHE BÀI THUYẾT TRÌNH CỦA NHÓM 4</h2>
+          <p>Nhóm 4 sẵn sàng tiếp nhận câu hỏi trong phiên <strong>Hỏi &amp; Đáp (Q&amp;A)</strong></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- REUSABLE MODAL COMPONENT -->
+  <div class="modal-backdrop" id="sharedModal" aria-hidden="true">
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <h3 id="modalTitle">Tiêu đề Modal</h3>
+        <button class="modal-close-btn" id="btnModalClose" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        Nội dung modal...
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESENTATION OVERVIEW THUMBNAILS DRAWER -->
+  <aside class="overview-drawer glass-panel" id="overviewDrawer" aria-hidden="true">
+    <div class="overview-header">
+      <h3><i class="fa-solid fa-table-cells"></i> Danh Mục Slide Thuyết Trình</h3>
+      <button class="modal-close-btn" id="btnOverviewClose">&times;</button>
+    </div>
+    <div class="overview-grid" id="overviewGrid">
+      <!-- Generated by JavaScript -->
+    </div>
+  </aside>
+
+  <!-- DYNAMIC HOVER TOOLTIP -->
+  <div class="dynamic-tooltip" id="dynamicTooltip">Tooltip text</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
