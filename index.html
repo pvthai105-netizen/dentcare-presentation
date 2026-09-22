@@ -814,49 +814,149 @@
       <div class="slide-content">
         <div class="section-tag" data-animate style="--delay: 100ms;">UML Specification</div>
         <h2 class="slide-title" data-animate style="--delay: 200ms;">Đặc Tả Use Case: Đặt Lịch Hẹn (UC-01)</h2>
-        <div class="spec-table-container glass-panel" data-animate style="--delay: 300ms;">
-          <table class="spec-table">
-            <tr>
-              <th style="width: 22%;">Tên Use Case</th>
-              <td><strong>ĐẶT LỊCH HẸN (SCHEDULE APPOINTMENT)</strong></td>
-            </tr>
-            <tr>
-              <th>Primary Actors</th>
-              <td>Bệnh nhân (Online Portal) / Lễ tân (Tại quầy hoặc qua Hotline)</td>
-            </tr>
-            <tr>
-              <th>Tiền điều kiện (Pre-conditions)</th>
-              <td>
-                1. Thông tin Bệnh nhân đã tồn tại trên CSDL (hoặc được Lễ tân đăng ký mới).<br>
-                2. Danh mục Nha sĩ và ca làm việc (TimeSlots) đã được cấu hình hoạt động.
-              </td>
-            </tr>
-            <tr>
-              <th>Luồng sự kiện chính (Main Flow)</th>
-              <td>
-                1. Người dùng chọn chức năng <strong>Đặt lịch hẹn</strong>.<br>
-                2. Chọn Nha sĩ phụ trách và Ngày mong muốn khám.<br>
-                3. Hệ thống hiển thị các khung giờ (TimeSlot) còn trống.<br>
-                4. Người dùng chọn TimeSlot phù hợp và nhập lý do khám sơ bộ.<br>
-                5. Hệ thống xác thực tính khả dụng và tạo bản ghi <code>Appointment</code> ở trạng thái <em>"Đã xác nhận"</em>.<br>
-                6. Hệ thống xuất thông báo thành công và mã lịch hẹn cho người dùng.
-              </td>
-            </tr>
-            <tr>
-              <th>Luồng rẽ nhánh (Alternative Flow)</th>
-              <td>
-                <strong>4a. Slot giờ đã bị người khác đặt trước:</strong><br>
-                - Hệ thống cảnh báo: <em>"Khung giờ vừa được giữ chỗ, vui lòng chọn lại."</em><br>
-                - Tự động gợi ý 3 khung giờ gần nhất còn trống của nha sĩ đó hoặc gợi ý nha sĩ tương đương.
-              </td>
-            </tr>
-            <tr>
-              <th>Ràng buộc nghiệp vụ (Business Rule)</th>
-              <td>
-                <span class="rule-highlight">Quy tắc độc quyền:</span> Một Nha sĩ chỉ có <strong>tối đa 01 Appointment</strong> ở trạng thái <em>"Đã xác nhận"</em> trong cùng một TimeSlot của một ngày.
-              </td>
-            </tr>
-          </table>
+        
+        <!-- SPECIFICATION DASHBOARD CONTAINER -->
+        <div class="spec-dashboard glass-panel" data-animate style="--delay: 300ms;">
+          
+          <!-- Top Meta Bar -->
+          <div class="spec-meta-bar">
+            <div class="spec-meta-left">
+              <span class="uc-code-badge">UC-01</span>
+              <div class="uc-title-group">
+                <span class="uc-label">Tên Use Case</span>
+                <h3 class="uc-heading">ĐẶT LỊCH HẸN <span class="uc-en-name">(SCHEDULE APPOINTMENT)</span></h3>
+              </div>
+            </div>
+            <div class="spec-meta-right">
+              <span class="uc-label"><i class="fa-solid fa-users"></i> Primary Actors:</span>
+              <div class="actor-tags-wrap">
+                <span class="role-pill patient"><i class="fa-solid fa-user"></i> Bệnh nhân <small>(Online Portal)</small></span>
+                <span class="role-pill receptionist"><i class="fa-solid fa-headset"></i> Lễ tân <small>(Tại quầy / Hotline)</small></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main 2-Column Grid -->
+          <div class="spec-main-grid">
+            
+            <!-- Column 1: Luồng sự kiện chính (Main Flow - 6 Steps Stepper) -->
+            <div class="spec-flow-card">
+              <div class="spec-card-header">
+                <div class="header-title">
+                  <i class="fa-solid fa-route text-primary"></i>
+                  <span>Luồng Sự Kiện Chính (Main Flow)</span>
+                </div>
+                <span class="spec-badge-count">6 Bước Chuẩn</span>
+              </div>
+              
+              <div class="spec-stepper">
+                <div class="spec-step-item">
+                  <div class="step-badge">01</div>
+                  <div class="step-content">
+                    <strong>Khởi tạo:</strong> Người dùng chọn chức năng <code>Đặt lịch hẹn</code> trên cổng thông tin.
+                  </div>
+                </div>
+
+                <div class="spec-step-item">
+                  <div class="step-badge">02</div>
+                  <div class="step-content">
+                    <strong>Chọn thông số:</strong> Chọn <strong>Nha sĩ phụ trách</strong> và <strong>Ngày khám</strong> mong muốn.
+                  </div>
+                </div>
+
+                <div class="spec-step-item">
+                  <div class="step-badge">03</div>
+                  <div class="step-content">
+                    <strong>Truy vấn:</strong> Hệ thống kiểm tra CSDL và hiển thị các khung giờ (<code>TimeSlot</code>) còn trống.
+                  </div>
+                </div>
+
+                <div class="spec-step-item highlight-step">
+                  <div class="step-badge">04</div>
+                  <div class="step-content">
+                    <strong>Xác nhận giờ &amp; Lý do:</strong> Chọn <code>TimeSlot</code> phù hợp và nhập tóm tắt lý do khám sơ bộ.
+                  </div>
+                </div>
+
+                <div class="spec-step-item">
+                  <div class="step-badge">05</div>
+                  <div class="step-content">
+                    <strong>Xác thực &amp; Lưu trữ:</strong> Hệ thống khóa slot, tạo bản ghi <code>Appointment</code> ở trạng thái <span class="status-pill confirmed">Đã xác nhận</span>.
+                  </div>
+                </div>
+
+                <div class="spec-step-item">
+                  <div class="step-badge success">06</div>
+                  <div class="step-content">
+                    <strong>Phản hồi:</strong> Hệ thống xuất thông báo thành công, cấp <strong>Mã lịch hẹn</strong> và gửi thông báo SMS.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2: Pre-conditions + Alt Flow + Business Rule -->
+            <div class="spec-side-stack">
+              
+              <!-- Pre-conditions -->
+              <div class="spec-subcard pre-conditions-card">
+                <div class="subcard-header">
+                  <i class="fa-solid fa-clipboard-check text-primary"></i>
+                  <span>Tiền điều kiện (Pre-conditions)</span>
+                </div>
+                <ul class="spec-check-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                    <span>Thông tin <strong>Bệnh nhân</strong> đã tồn tại trên CSDL (hoặc được Lễ tân đăng ký mới).</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                    <span>Danh mục <strong>Nha sĩ</strong> và ca làm việc (<code>TimeSlots</code>) đã được cấu hình hoạt động.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Alternative Flow -->
+              <div class="spec-subcard alt-flow-card">
+                <div class="subcard-header">
+                  <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+                  <span>Luồng Rẽ Nhánh (Alternative Flow)</span>
+                  <span class="alt-step-ref">Tại Bước 4</span>
+                </div>
+                <div class="alt-flow-body">
+                  <div class="alt-scenario">
+                    <strong>4a. Slot giờ đã bị người khác đặt trước:</strong>
+                  </div>
+                  <div class="alt-action-item warning-notice">
+                    <i class="fa-solid fa-bell text-warning"></i>
+                    <span>Hệ thống cảnh báo: <em>"Khung giờ vừa được giữ chỗ, vui lòng chọn lại."</em></span>
+                  </div>
+                  <div class="alt-action-item suggest-notice">
+                    <i class="fa-solid fa-wand-magic-sparkles text-primary"></i>
+                    <span>Tự động gợi ý <strong>3 khung giờ gần nhất</strong> còn trống hoặc đề xuất nha sĩ tương đương.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Business Rule -->
+              <div class="spec-subcard business-rule-card">
+                <div class="subcard-header">
+                  <i class="fa-solid fa-shield-halved text-brand"></i>
+                  <span>Ràng Buộc Nghiệp Vụ (Business Rule)</span>
+                </div>
+                <div class="rule-content-box">
+                  <div class="rule-tag">
+                    <i class="fa-solid fa-lock"></i> Quy tắc độc quyền (Single Booking Invariant)
+                  </div>
+                  <p class="rule-statement">
+                    Một Nha sĩ chỉ có <strong>tối đa 01 Appointment</strong> ở trạng thái <span class="status-pill confirmed">Đã xác nhận</span> trong cùng một <code>TimeSlot</code> của một ngày.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>
